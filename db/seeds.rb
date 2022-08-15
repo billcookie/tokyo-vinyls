@@ -1,15 +1,18 @@
 require "discogs"
 require "faker"
 puts "destroying sweet good music"
-puts "destroying users"
-puts "destroying offers"
+puts "destroying big bad users"
+puts "destroying juicy offers"
+puts "destroying cool bookings"
 Offer.destroy_all
 Vinyl.destroy_all
 User.destroy_all
+Booking.destroy_all
 # List.destroy_all
 puts "seeding sweet good music"
 puts "seeding users"
 puts "seeding offers"
+puts "seeding bookings"
 # the Le Wagon copy of the API
 wrapper = Discogs::Wrapper.new("Tokyo Vinyls", user_token: ENV["DISCOGS_TOKEN"])
 
@@ -65,9 +68,21 @@ User.all.each do |user|
   offer.save!
 end
 
+User.all.each do |user|
+  booking = Booking.new(
+    user: user,
+    offer: Offer.where.not(id: user.offers).sample,
+    start_date: Date.today + rand(5..10),
+    end_date: Date.today + rand(11..15)
+  )
+  booking.save!
+end
+
+
 puts "finished seeding sweet good music"
 puts "finished seeding users"
 puts "finished seeding offers"
+puts "finished seeding booking"
 
 
 # search = auth_wrapper.search("Necrovore", :per_page => 10, :type => :artist)
