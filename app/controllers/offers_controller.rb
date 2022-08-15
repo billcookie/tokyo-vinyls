@@ -4,4 +4,8 @@ class OffersController < ApplicationController
     @offer = Offer.find(params[:id])
   end
 
+  def index
+    @offers = Offer.all
+  end
+
 end
