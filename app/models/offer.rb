@@ -5,4 +5,5 @@ class Offer < ApplicationRecord
   has_many :bookings
 
   validates :price, presence: true
+
 end
