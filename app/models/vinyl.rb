@@ -1,0 +1,2 @@
+class Vinyl < ApplicationRecord
+end
