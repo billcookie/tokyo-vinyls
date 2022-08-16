@@ -2,7 +2,9 @@
   <div class="container">
     <h1>Tokyo Vinyls</h1>
     <p>Share your favorite records with the world</p>
-    <a class="btn btn-flat" href="#">Browse</a>
+    <div class="btn btn-flat">
+     <%= link_to 'Browse', vinyls_path %>
+    </div>
   </div>
 </div>
 
@@ -11,8 +13,10 @@
   <div class="cards">
 
     <% @offers.each do |offer| %>
-      <div class="card-vinyl">
+      <%= link_to offer_path(offer) do %>
+      <div class="card-vinyl" >
         <%= image_tag offer.vinyl.img_url %>
+
         <div class="card-vinyl-infos">
           <div>
             <h2> <%= offer.vinyl.name %> </h2>
@@ -21,6 +25,7 @@
           <h2 class="card-vinyl-pricing"> <%= offer.price %> </h2>
         </div>
       </div>
+      <% end %>
     <% end %>
   </div>
 </div>
