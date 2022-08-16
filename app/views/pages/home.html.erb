@@ -1,9 +1,26 @@
-<!-- navbar -->
-
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(../../images/banner.jpg);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path "banner.jpg" %>);">
   <div class="container">
     <h1>Tokyo Vinyls</h1>
     <p>Share your favorite records with the world</p>
     <a class="btn btn-flat" href="#">Browse</a>
+  </div>
+</div>
+
+<div class="display-cards">
+  <h2>Top Offers</h2>
+  <div class="cards">
+
+    <% @offers.each do |offer| %>
+      <div class="card-vinyl">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <div class="card-vinyl-infos">
+          <div>
+            <h2> <%= offer.vinyl.name %> </h2>
+            <p> <%= offer.vinyl.artist %> </p>
+          </div>
+          <h2 class="card-vinyl-pricing"> <%= offer.price %> </h2>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
