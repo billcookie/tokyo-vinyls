@@ -33,28 +33,39 @@ end
 10.times do
   User.create!(
     email: Faker::Internet.email,
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
     password: "123123"
   )
 end
 
 User.create!(
   email: "billcook8122@gmail.com",
-  password: "123123"
+  password: "123123",
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name
+
 )
 
 User.create!(
   email: "willmes.carla@gmail.com",
-  password: "123123"
+  password: "123123",
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name
 )
 
 User.create!(
   email: "ayakayakaaaa@gmail.com",
-  password: "123123"
+  password: "123123",
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name
 )
 
 User.create!(
   email: "jdchappelow@gmail.com",
-  password: "123123"
+  password: "123123",
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name
 )
 
 User.all.each do |user|

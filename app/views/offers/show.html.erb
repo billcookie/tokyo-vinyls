@@ -1,8 +1,9 @@
 <div class = "container">
   <h1>Your offer</h1>
+  <%=  image_tag @offer.vinyl.img_url %>
   <%=  @offer.vinyl.name %>
   <%=  @offer.description %>
   <%=  @offer.price %>
-  <%= link_to "Go Back", offers_path %>
+  <%= link_to "Go Back", offers_path, class: "btn button" %>
   <%= link_to class: "btn btn-primary" %>
 </div>

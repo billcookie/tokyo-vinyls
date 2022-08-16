@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>All Offers</h1>
+  <% @offers.each do |offer| %>
+    <div class="cards">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), image_tag offer.vinyl.img_url ">
+        <li><%= offer.vinyl.name %></li>
+        <%= offer.user_id %>
+        <%= offer.condition %>
+        <%= offer.price %>
+      </div>
+      <%= link_to "see the detail", offer_path(offer) %>
+    </div>
+  <% end  %>
+</div>
