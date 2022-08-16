@@ -4,10 +4,10 @@ puts "destroying sweet good music"
 puts "destroying big bad users"
 puts "destroying juicy offers"
 puts "destroying cool bookings"
+Booking.destroy_all
 Offer.destroy_all
 Vinyl.destroy_all
 User.destroy_all
-Booking.destroy_all
 # List.destroy_all
 puts "seeding sweet good music"
 puts "seeding users"
@@ -24,7 +24,8 @@ artist_ids.each do |artist_id|
     Vinyl.create!(
       name: release["title"],
       artist: release['artist'],
-      publishing_year: release["year"]
+      publishing_year: release["year"],
+      img_url: release["thumb"]
     )
   end
 end
@@ -85,9 +86,19 @@ puts "finished seeding offers"
 puts "finished seeding booking"
 
 
-# search = auth_wrapper.search("Necrovore", :per_page => 10, :type => :artist)
+# search = wrapper.search("Elton John", :per_page => 10, :type => :artist)
 
 # artist          = wrapper.get_artist("329937")
 # artist_releases = wrapper.get_artist_releases("329937")
 # release         = wrapper.get_release("1529724")
 # label           = wrapper.get_label("29515")
+
+
+
+
+
+# when searching with artist:
+# image is called "cover_image"
+
+
+# Artist_releases for image "thumb"
