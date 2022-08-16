@@ -1,0 +1,8 @@
+<h1>INDEX of all records</h1>
+<% @vinyls.each do |vinyl| %>
+  <li>
+    <%= link_to vinyl.name, vinyl_path(vinyl) %>,
+    <%= vinyl.artist %>,
+    <%= vinyl.publishing_year %>,
+  </li>
+<% end %>
