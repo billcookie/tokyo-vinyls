@@ -4,5 +4,6 @@
     <%= link_to vinyl.name, vinyl_path(vinyl) %>,
     <%= vinyl.artist %>,
     <%= vinyl.publishing_year %>,
+    <%= image_tag vinyl.img_url, alt: "text" %>
   </li>
 <% end %>
