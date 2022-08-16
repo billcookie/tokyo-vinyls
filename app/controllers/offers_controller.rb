@@ -5,6 +5,8 @@ class OffersController < ApplicationController
   end
 
   def index
+    @booking = Booking.new
+    @offer = Offer.new
     @offers = Offer.all
   end
 
