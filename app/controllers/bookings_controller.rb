@@ -1,7 +1,6 @@
 class BookingsController < ActionController::Base
 
   def index
-
     @bookings = Booking.all
   end
 
@@ -14,3 +13,11 @@ class BookingsController < ActionController::Base
       render :new, status: :unprocessable_entity
     end
   end
+
+
+  private
+
+  def booking_params
+     params.require(:booking).permit(:offer_id)
+  end
+end
