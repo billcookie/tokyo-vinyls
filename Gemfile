@@ -52,6 +52,7 @@ gem "devise"
 gem "devise"
 gem "discogs-wrapper"
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+gem "pundit"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
