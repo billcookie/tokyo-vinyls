@@ -1,7 +1,8 @@
 class VinylsController < ApplicationController
-
+  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_after_action :verify_authorized
   def index
-    @vinyls = Vinyl.all
+    @vinyls = policy_scope(Vinyl)
   end
 
   def show
