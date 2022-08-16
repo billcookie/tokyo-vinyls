@@ -4,5 +4,8 @@ class Offer < ApplicationRecord
 
   has_many :bookings
 
-  validates :price, presence: true
+  validates :description, length: { in: 8..100 }
+  validates :price, numericality: { only_integer: true }
+  validates :location, presence: true
+
 end
