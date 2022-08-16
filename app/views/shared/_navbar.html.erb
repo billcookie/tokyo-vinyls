@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "logo.png" %>
     <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,9 +11,9 @@
         <% if user_signed_in? %>
           <li class="nav-item active">
             <%= link_to "Offers", offers_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "My bookings", offer_bookings_path, class: "nav-link" %>
+            <li class="nav-item active">
+              <%= link_to "My Bookings", bookings_path, class: "nav-link" %>
+            </li>
           </li>
           <li class="nav-item dropdown">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
