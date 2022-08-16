@@ -1,0 +1,4 @@
+<%= simple_form_for [@sandwich, @shop]  do |f| %>
+  <%= f.association :ingredient %>
+  <%= f.submit 'Add Filling', class: 'btn btn-primary mt-2' %>
+<% end %>
