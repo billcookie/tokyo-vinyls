@@ -1,22 +1,22 @@
 require "discogs"
 require "faker"
-puts "destroying sweet good music"
-puts "destroying big bad users"
-puts "destroying juicy offers"
-puts "destroying cool bookings"
+puts "destroying sweet good music....."
+puts "destroying big bad users....."
+puts "destroying juicy offers....."
+puts "destroying cool bookings...."
 Booking.destroy_all
 Offer.destroy_all
 Vinyl.destroy_all
 User.destroy_all
 # List.destroy_all
-puts "seeding sweet good music"
-puts "seeding users"
-puts "seeding offers"
-puts "seeding bookings"
+puts "seeding sweet good music....."
+puts "seeding users....."
+puts "seeding offers....."
+puts "seeding bookings...."
 # the Le Wagon copy of the API
 wrapper = Discogs::Wrapper.new("Tokyo Vinyls", user_token: ENV["DISCOGS_TOKEN"])
 
-artist_ids = [2508414]
+artist_ids = [2508414, 65049, 304053, 3852273]
 
 artist_ids.each do |artist_id|
   data = wrapper.get_artist_releases(artist_id)
