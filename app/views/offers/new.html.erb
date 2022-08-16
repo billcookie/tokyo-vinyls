@@ -1,0 +1,8 @@
+<%= simple_form_for(@offer) do |f| %>
+  <%= f.association :vinyl%>
+  <%= f.input :price%>
+  <%= f.input :condition%>
+  <%= f.input :description %>
+  <%= f.input :location%>
+  <%= f.submit %>
+<% end %>

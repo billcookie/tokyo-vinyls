@@ -1,0 +1,80 @@
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 24px;
+  padding: 40px;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.card-vinyl {
+  overflow: hidden;
+  background: rgb(240, 240, 240);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  width: 250px;
+
+}
+
+.card-vinyl > img {
+  height: 250px;
+  width: 250px;
+  object-fit: cover;
+}
+
+.card-vinyl h2 {
+  font-size: 14px;
+  margin: 0;
+  text-align: left;
+}
+
+.card-vinyl p {
+  font-size: 10px;
+  opacity: .7;
+  margin: 0;
+  text-align: left;
+}
+
+
+.card-vinyl .card-vinyl-infos {
+  color: #201E1F;
+  font-family: 'Encode Sans Condensed', sans-serif;
+  text-transform: uppercase;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
