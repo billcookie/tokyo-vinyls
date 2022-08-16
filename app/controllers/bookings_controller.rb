@@ -19,7 +19,7 @@ class BookingsController < ApplicationController
     @booking.offer = @offer
 
     if @booking.save
-      redirect_to offer_bookings_path(@offer)
+      redirect_to bookings_path(@offer)
     else
       render :new, status: :unprocessable_entity
     end
