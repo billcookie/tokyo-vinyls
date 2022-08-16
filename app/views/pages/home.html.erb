@@ -7,12 +7,12 @@
 </div>
 
 <div class="display-cards">
-  <h2>Top Offers</h2>
+  <h2 id="offers-header">Top Offers</h2>
   <div class="cards">
 
     <% @offers.each do |offer| %>
       <div class="card-vinyl">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <%= image_tag offer.vinyl.img_url %>
         <div class="card-vinyl-infos">
           <div>
             <h2> <%= offer.vinyl.name %> </h2>
