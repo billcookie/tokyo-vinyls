@@ -1,1 +1,8 @@
-<h1>Your offer</h1>
+<div class = "container">
+  <h1>Your offer</h1>
+  <%=  @offer.vinyl.name %>
+  <%=  @offer.description %>
+  <%=  @offer.price %>
+  <%= link_to "Go Back", offers_path %>
+  <%= link_to class: "btn btn-primary" %>
+</div>
