@@ -10,8 +10,9 @@
 
 <div class="display-cards">
   <h2 id="offers-header">Top Offers</h2>
+  <!-- <button class="pre-btn"><img src="images/arrow.png" alt=""></button>
+  <button class="nxt-btn"><img src="images/arrow.png" alt=""></button> -->
   <div class="cards">
-
     <% @offers.each do |offer| %>
       <%= link_to offer_path(offer) do %>
       <div class="card-vinyl" >
@@ -22,7 +23,7 @@
             <h2> <%= offer.vinyl.name %> </h2>
             <p> <%= offer.vinyl.artist %> </p>
           </div>
-          <h2 class="card-vinyl-pricing"> <%= offer.price %> </h2>
+          <h2 class="card-vinyl-pricing"> <%= offer.price %> JPY </h2>
         </div>
       </div>
       <% end %>
