@@ -1,14 +1,23 @@
+<div class="nav-bar">
+</div>
 <div class="container">
-  <h1>All Offers</h1>
-  <% @offers.each do |offer| %>
-    <div class="cards">
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), image_tag offer.vinyl.img_url ">
-        <li><%= offer.vinyl.name %></li>
-        <%= offer.user_id %>
-        <%= offer.condition %>
-        <%= offer.price %>
+  <h1 id="all-offers-heading">All Offers</h1>
+  <div>
+    <% @offers.each do |offer| %>
+      <%# <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), image_tag offer.vinyl.img_url "> %>
+      <div class="cards">
+        <div class="cards-img">
+          <%= image_tag offer.vinyl.img_url %>
+        </div>
+        <div class="cards-description">
+          <ul><%= offer.vinyl.name %></ul>
+          <ul>USER ID: <%= offer.user_id %></ul>
+          <ul>CONDITION: <%= offer.condition %></ul>
+          <ul>PRICE: <%= offer.price %></ul>
+          <%= link_to "see the detail", offer_path(offer) %>
+        </div>
       </div>
-      <%= link_to "see the detail", offer_path(offer) %>
-    </div>
-  <% end  %>
+      <%# </div> %>
+    <% end  %>
+  </div>
 </div>
