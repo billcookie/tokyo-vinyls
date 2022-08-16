@@ -1,0 +1,8 @@
+<% @bookings.each do |booking| %>
+  <li>
+    <%= booking.offer.vinyl.name  %>
+    <%= booking.status %>
+    <%= booking.start_date %>
+    <%= booking.end_date %>
+  </li>
+<% end %>
