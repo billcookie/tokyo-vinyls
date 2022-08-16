@@ -4,8 +4,8 @@ puts "destroying sweet good music"
 puts "destroying big bad users"
 puts "destroying juicy offers"
 puts "destroying cool bookings"
-Offer.destroy_all
 Booking.destroy_all
+Offer.destroy_all
 Vinyl.destroy_all
 User.destroy_all
 # List.destroy_all
