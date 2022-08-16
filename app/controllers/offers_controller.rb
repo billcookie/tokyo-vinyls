@@ -1,11 +1,11 @@
 class OffersController < ApplicationController
-
   def index
     @offers = policy_scope(Offer)
   end
 
   def show
     @offer = Offer.find(params[:id])
+    @booking = Booking.new(offer: @offer)
     authorize @offer
   end
 
@@ -27,7 +27,6 @@ class OffersController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
 
   private
 
