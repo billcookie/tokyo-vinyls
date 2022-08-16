@@ -1,7 +1,6 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.all
-    authorize @bookings
+    @bookings = policy_scope(Booking)
   end
 
   def show
@@ -20,7 +19,7 @@ class BookingsController < ApplicationController
     @booking.offer = @offer
 
     if @booking.save
-      redirect_to offers_path
+      redirect_to offer_bookings_path(@offer)
     else
       render :new, status: :unprocessable_entity
     end
