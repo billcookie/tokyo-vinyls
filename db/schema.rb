@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_16_030333) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_17_025857) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "artists", force: :cascade do |t|
+    t.string "name"
+    t.text "profile"
+    t.string "profile_img"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "bookings", force: :cascade do |t|
     t.datetime "start_date"
@@ -57,15 +65,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_16_030333) do
     t.string "name"
     t.string "genre"
     t.string "song"
-    t.string "artist"
     t.integer "publishing_year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "img_url"
+    t.bigint "artist_id", null: false
+    t.index ["artist_id"], name: "index_vinyls_on_artist_id"
   end
 
   add_foreign_key "bookings", "offers"
   add_foreign_key "bookings", "users"
   add_foreign_key "offers", "users"
   add_foreign_key "offers", "vinyls"
+  add_foreign_key "vinyls", "artists"
 end

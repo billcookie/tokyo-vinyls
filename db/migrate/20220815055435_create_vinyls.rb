@@ -4,7 +4,6 @@ class CreateVinyls < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :genre
       t.string :song
-      t.string :artist
       t.integer :publishing_year
 
       t.timestamps

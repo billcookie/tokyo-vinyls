@@ -7,6 +7,7 @@ puts "destroying cool bookings...."
 Booking.destroy_all
 Offer.destroy_all
 Vinyl.destroy_all
+Artist.destroy_all
 User.destroy_all
 # List.destroy_all
 puts "seeding sweet good music....."
@@ -19,15 +20,26 @@ wrapper = Discogs::Wrapper.new("Tokyo Vinyls", user_token: ENV["DISCOGS_TOKEN"])
 artist_ids = [2508414, 65049, 304053, 3852273]
 
 artist_ids.each do |artist_id|
-  data = wrapper.get_artist_releases(artist_id)
-  data["releases"].each do |release|
-    Vinyl.create!(
-      name: release["title"],
-      artist: release['artist'],
-      publishing_year: release["year"],
-      img_url: release["thumb"]
-    )
-  end
+  data2 = wrapper.get_artist(artist_id)
+  data1 = wrapper.get_artist_releases(artist_id)
+
+
+    composer = Artist.create!(
+        name: data2["name"],
+        profile: data2["profile"],
+        profile_img: data2["images"][0]["uri"]
+      )
+
+
+    data1["releases"].each do |release|
+    phonograph = Vinyl.new(
+        name: release["title"],
+        publishing_year: release["year"],
+        img_url: release["thumb"]
+      )
+    phonograph.artist = composer
+    phonograph.save!
+    end
 end
 
 10.times do
@@ -99,8 +111,8 @@ puts "finished seeding booking"
 
 # search = wrapper.search("Elton John", :per_page => 10, :type => :artist)
 
-# artist          = wrapper.get_artist("329937")
-# artist_releases = wrapper.get_artist_releases("329937")
+# artist          = wrapper.get_artist("57103")
+# artist_releases = wrapper.get_artist_releases("57103")
 # release         = wrapper.get_release("1529724")
 # label           = wrapper.get_label("29515")
 
@@ -113,3 +125,6 @@ puts "finished seeding booking"
 
 
 # Artist_releases for image "thumb"
+
+# images
+# 57103
