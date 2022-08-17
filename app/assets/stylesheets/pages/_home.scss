@@ -50,7 +50,7 @@ h1 {
   text-align: center;
   padding: 40px;
 
-  #offers-header {
+  #page-header {
     font-size: 24px;
     font-family: 'Encode Sans Condensed', sans-serif;
     text-transform: uppercase;
@@ -59,4 +59,13 @@ h1 {
     white-space: nowrap;
     margin-bottom: 40px;
   }
+}
+
+.display-cards #landing-header {
+    font-size: 24px;
+    font-family: 'Encode Sans Condensed', sans-serif;
+    text-transform: uppercase;
+    font-weight: 100;
+    color: white;
+    white-space: nowrap;
 }
