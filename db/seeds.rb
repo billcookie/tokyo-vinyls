@@ -1,5 +1,6 @@
 require "discogs"
 require "faker"
+require "yaml"
 puts "destroying sweet good music....."
 puts "destroying big bad users....."
 puts "destroying juicy offers....."
@@ -16,7 +17,7 @@ puts "seeding bookings...."
 # the Le Wagon copy of the API
 wrapper = Discogs::Wrapper.new("Tokyo Vinyls", user_token: ENV["DISCOGS_TOKEN"])
 
-artist_ids = [2508414, 65049, 304053, 3852273]
+artist_ids = [2508414]
 
 artist_ids.each do |artist_id|
   data = wrapper.get_artist_releases(artist_id)
@@ -67,6 +68,9 @@ User.create!(
   last_name: Faker::Name.last_name
 )
 
+addresses_file = File.open('db/locations.yml').read
+addresses = YAML.load(addresses_file)
+
 User.all.each do |user|
   offer = Offer.new(
     price: [100, 200, 300].sample,
@@ -74,7 +78,7 @@ User.all.each do |user|
     description: Faker::Quotes::Shakespeare.hamlet_quote,
     vinyl: Vinyl.all.sample,
     condition: ["good", "bad", "ok"].sample,
-    location: Faker::Address.city
+    location: addresses.sample
   )
   offer.save!
 end
