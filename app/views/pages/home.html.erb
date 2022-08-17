@@ -10,16 +10,13 @@
 
 <div class="display-cards">
   <h2 id="offers-header">Top Offers</h2>
-  <!-- <button class="pre-btn"><img src="images/arrow.png" alt=""></button>
-  <button class="nxt-btn"><img src="images/arrow.png" alt=""></button> -->
-  <div class="cards">
+  <div class="card-row">
     <% @offers.each do |offer| %>
-      <%= link_to offer_path(offer) do %>
-      <div class="card-vinyl" >
+      <%=link_to offer_path(offer) do %>
+      <div class="card-vinyl mx-2" >
         <%= image_tag offer.vinyl.img_url %>
-
         <div class="card-vinyl-infos">
-          <div>
+          <div class='truncate'>
             <h2> <%= offer.vinyl.name %> </h2>
             <p> <%= offer.vinyl.artist %> </p>
           </div>

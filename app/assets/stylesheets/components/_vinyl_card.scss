@@ -1,7 +1,6 @@
-.cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 24px;
+.card-row {
+  display: flex;
+  overflow: scroll;
   padding: 40px;
 }
 
@@ -78,4 +77,14 @@
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.truncate {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
