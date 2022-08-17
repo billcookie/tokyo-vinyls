@@ -1,5 +1,8 @@
 <div class="display-cards">
   <h2 id="offers-header">Offers</h2>
+  <div class="btn btn-flat">
+    <%= link_to 'Create', new_offer_path  %>
+  </div>
   <div class="cards">
     <% @offers.each do |offer| %>
       <%= link_to offer_path(offer) do %>
