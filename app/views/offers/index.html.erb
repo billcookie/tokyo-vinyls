@@ -1,14 +1,21 @@
-<div class="container">
-  <h1>All Offers</h1>
-  <% @offers.each do |offer| %>
-    <div class="cards">
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), image_tag offer.vinyl.img_url ">
-        <li><%= offer.vinyl.name %></li>
-        <%= offer.user_id %>
-        <%= offer.condition %>
-        <%= offer.price %>
-      </div>
-      <%= link_to "see the detail", offer_path(offer) %>
-    </div>
-  <% end  %>
+<div class="display-cards">
+  <h2 id="offers-header">Offers</h2>
+  <div class="cards">
+    <% @offers.each do |offer| %>
+      <%= link_to offer_path(offer) do %>
+        <div class="card-offer" >
+          <%= image_tag offer.vinyl.img_url %>
+          <div class="card-offer-infos">
+            <div>
+              <h2> <%= offer.vinyl.name %> </h2>
+              <p><%= offer.condition %></p>
+              <p> <%= offer.price %>円</p>
+              <p><%= offer.location %></p>
+            </div>
+            <h2 class="card-offer-pricing"> </h2>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
