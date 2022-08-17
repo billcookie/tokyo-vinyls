@@ -47,9 +47,6 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 gem "sassc-rails"
 
-# Geocode
-gem "geocoder"
-
 # Custom
 gem "devise"
 gem "devise"

@@ -67,9 +67,6 @@ User.create!(
   last_name: Faker::Name.last_name
 )
 
-addresses_file = File.open('db/locations.yml').read
-addresses = YAML.load(addresses_file)
-
 User.all.each do |user|
   offer = Offer.new(
     price: [100, 200, 300].sample,
@@ -77,7 +74,7 @@ User.all.each do |user|
     description: Faker::Quotes::Shakespeare.hamlet_quote,
     vinyl: Vinyl.all.sample,
     condition: ["good", "bad", "ok"].sample,
-    location: addresses.sample
+    location: Faker::Address.city
   )
   offer.save!
 end
