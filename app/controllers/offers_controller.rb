@@ -22,7 +22,6 @@ class OffersController < ApplicationController
     @offer.vinyl = @vinyl
     if @offer.save
       redirect_to offers_path
-
     else
       render :new, status: :unprocessable_entity
     end
