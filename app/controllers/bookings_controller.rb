@@ -1,7 +1,6 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.all
-    authorize @bookings
+    @bookings = policy_scope(Booking)
   end
 
   def show
@@ -10,18 +9,18 @@ class BookingsController < ApplicationController
   end
 
   def create
+
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     authorize @booking
-    @offer = Offer.find(booking_params[:offer_id])
+    @offer = Offer.find(params[:offer_id])
     @booking.offer = @offer
-    if @offer.save
+    if @booking.save
       redirect_to bookings_path
     else
       render :new, status: :unprocessable_entity
     end
   end
-
 
   private
 

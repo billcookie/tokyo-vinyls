@@ -1,10 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
-  skip_before_action :authenticate_user!, only: :home
   before_action :configure_permitted_parameters, if: :devise_controller?
-
-  def home
-  end
 
   def configure_permitted_parameters
   # For additional fields in app/views/devise/registrations/new.html.erb
@@ -13,7 +9,6 @@ class ApplicationController < ActionController::Base
   # For additional in app/views/devise/registrations/edit.html.erb
   devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name])
   end
-  before_action :authenticate_user!
   include Pundit::Authorization
 
   # Pundit: white-list approach
@@ -32,6 +27,4 @@ class ApplicationController < ActionController::Base
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
-
-
 end

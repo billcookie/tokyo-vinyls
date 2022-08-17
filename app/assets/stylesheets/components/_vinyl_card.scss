@@ -29,7 +29,7 @@
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .cards {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
@@ -43,9 +43,9 @@
 .card-vinyl {
   overflow: hidden;
   background: rgb(240, 240, 240);
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   width: 250px;
-
+  height: 330px;
 }
 
 .card-vinyl > img {
@@ -62,15 +62,14 @@
 
 .card-vinyl p {
   font-size: 10px;
-  opacity: .7;
+  opacity: 0.7;
   margin: 0;
   text-align: left;
 }
 
-
 .card-vinyl .card-vinyl-infos {
-  color: #201E1F;
-  font-family: 'Encode Sans Condensed', sans-serif;
+  color: #201e1f;
+  font-family: "Encode Sans Condensed", sans-serif;
   text-transform: uppercase;
   padding: 16px;
   display: flex;

@@ -1,4 +1,4 @@
-class OfferPolicy < ApplicationPolicy
+class VinylPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
@@ -6,16 +6,7 @@ class OfferPolicy < ApplicationPolicy
     end
   end
 
-
   def show?
     true
-  end
-
-  def new?
-    true
-  end
-
-  def create?
-    new?
   end
 end

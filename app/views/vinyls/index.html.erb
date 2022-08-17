@@ -1,9 +1,22 @@
-<h1>INDEX of all records</h1>
-<% @vinyls.each do |vinyl| %>
-  <li>
-    <%= link_to vinyl.name, vinyl_path(vinyl) %>,
-    <%= vinyl.artist %>,
-    <%= vinyl.publishing_year %>,
-    <%= image_tag vinyl.img_url, alt: "text" %>
-  </li>
-<% end %>
+
+<div class="display-cards">
+  <h2 id="offers-header">Vinyls</h2>
+  <div class="cards">
+
+    <% @vinyls.each do |vinyl| %>
+      <%= link_to vinyl_path(vinyl) do %>
+      <div class="card-vinyl" >
+        <%= image_tag vinyl.img_url %>
+
+        <div class="card-vinyl-infos">
+          <div>
+            <h2> <%= vinyl.name %> </h2>
+            <p> <%= vinyl.artist %> </p>
+          </div>
+          <h2 class="card-vinyl-pricing"> <%= vinyl.publishing_year %> </h2>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

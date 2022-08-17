@@ -1,5 +1,4 @@
 class OffersController < ApplicationController
-
   def index
     @offers = policy_scope(Offer)
     @markers = @offers.geocoded.map do |offer|
@@ -12,6 +11,7 @@ class OffersController < ApplicationController
 
   def show
     @offer = Offer.find(params[:id])
+    @booking = Booking.new(offer: @offer)
     authorize @offer
   end
 
@@ -28,12 +28,10 @@ class OffersController < ApplicationController
     @offer.vinyl = @vinyl
     if @offer.save
       redirect_to offers_path
-
     else
       render :new, status: :unprocessable_entity
     end
   end
-
 
   private
 

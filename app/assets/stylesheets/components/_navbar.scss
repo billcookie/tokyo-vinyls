@@ -1,7 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: #201E1F;
-  color: white;
+  background: #201e1f;
+  font-family: "Encode Sans Condensed", sans-serif;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -12,6 +12,13 @@
   width: 40px;
 }
 
-.nav-item {
+.nav-login {
+  text-transform: uppercase;
+  font-family: "Encode Sans Condensed", sans-serif;
   color: white;
+}
+
+.nav-login:hover {
+  color: #5c01a7;
+  transition: background 0.3s ease;
 }

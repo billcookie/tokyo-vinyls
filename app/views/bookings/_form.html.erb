@@ -1,0 +1,5 @@
+<%= simple_form_for [@offer, @booking]  do |f| %>
+  <%= f.input :start_date, as: :date, html5: true %>
+  <%= f.input :end_date, as: :date, html5: true %>
+  <%= f.button :submit, "Book Now", data: { disable_with: "Booked" } %>
+<% end %>
