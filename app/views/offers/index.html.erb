@@ -6,7 +6,7 @@
   <div class="cards">
     <% @offers.each do |offer| %>
       <%= link_to offer_path(offer) do %>
-        <div class="card-offer" >
+        <div class="card-vinyl" >
           <%= image_tag offer.vinyl.img_url %>
           <div class="card-offer-infos">
             <div>
@@ -15,8 +15,14 @@
               <p> <%= offer.price %>円</p>
               <p><%= offer.location %></p>
             </div>
-            <h2 class="card-offer-pricing"> </h2>
+            <h2 class="card-vinyl-pricing"> </h2>
           </div>
         </div>
       <% end %>
     <% end %>
+
+
+    <div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
