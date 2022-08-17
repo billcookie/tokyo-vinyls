@@ -9,7 +9,7 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 60px;
 }
 
 .nav-login {
@@ -18,7 +18,13 @@
   color: white;
 }
 
-.nav-login:hover {
+.nav-link-own:hover {
   color: #5c01a7;
   transition: background 0.3s ease;
+}
+
+.dropdown {
+  background-color: #201e1f;
+  opacity: 0.8;
+  color: white;
 }
