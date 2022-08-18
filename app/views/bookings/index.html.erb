@@ -1,22 +1,67 @@
 <div class="display-cards">
   <h2 id="bookings-header">My bookings</h2>
-  <h3 id="pending-header"> > Pending Offers <%= "(#{@bookings.count})" %> </h3>
-  <div class="cards">
-    <% @bookings.each do |booking| %>
-      <div class="card-vinyl" >
-        <%= image_tag booking.offer.vinyl.img_url %>
-        <div class="card-vinyl-infos">
-          <div>
-            <h2> <%= booking.offer.vinyl.name %> </h2>
-            <p> <em> <%= booking.status %> </em> </p>
-            <%= "#{booking.start_date.to_time.strftime('%B %e')} - "%>
-            <%= booking.end_date.to_time.strftime('%B %e') %>
+  <ul class="nav tabs-underlined" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <span class="nav-link tab-underlined active" id="bookings-tab" data-bs-toggle="tab" data-bs-target="#bookings-tab-pane" role="tab" aria-controls="bookings-tab-pane" aria-selected="true">> Pending Offers<%= "(#{@bookings.count})" %></span>
+    </li>
+    <li class="nav-item" role="presentation">
+      <span class="nav-link tab-underlined" id="requests-tab" data-bs-toggle="tab" data-bs-target="#requests-tab-pane" role="tab" aria-controls="requests-tab-pane" aria-selected="false">> Incoming Bookings</span>
+    </li>
+    <li class="nav-item" role="presentation">
+      <span class="nav-link tab-underlined" id="conversations-tab" data-bs-toggle="tab" data-bs-target="#conversations-tab-pane" role="tab" aria-controls="conversations-tab-pane" aria-selected="false">> Completed</span>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade py-3 show active" id="bookings-tab-pane" role="tabpanel" aria-labelledby="bookings-tab" tabindex="0">
+      <div class="cards">
+        <% @bookings.each do |booking| %>
+          <div class="card-vinyl" >
+            <%= image_tag booking.offer.vinyl.img_url %>
+            <div class="card-vinyl-infos">
+              <div>
+                <h2> <%= booking.offer.vinyl.name %> </h2>
+                <p> <em> <%= booking.status %> </em> </p>
+                <%= "#{booking.start_date.to_time.strftime('%B %e')} - "%>
+                <%= booking.end_date.to_time.strftime('%B %e') %>
+              </div>
+              <h2 class="card-vinyl-pricing"> <%= "¥#{booking.offer.price}" %> </h2>
+            </div>
           </div>
-          <h2 class="card-vinyl-pricing"> <%= "¥#{booking.offer.price}" %> </h2>
-        </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
+    <div class="tab-pane fade py-3" id="requests-tab-pane" role="tabpanel" aria-labelledby="requests-tab" tabindex="0">
+      <div class="cards">
+        <% @bookings_as_owner.each do |booking| %>
+          <div class="card-vinyl" >
+            <%= image_tag booking.offer.vinyl.img_url %>
+            <div class="card-vinyl-infos">
+              <div>
+                <h2> <%= booking.offer.vinyl.name %> </h2>
+                <% if booking.pending? %>
+                  <div class="d-flex">
+                    <%= simple_form_for booking do |f| %>
+                      <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+                      <%= f.submit 'Accept', class: 'btn btn-info' %>
+                    <% end %>
+                    <%= simple_form_for booking do |f| %>
+                      <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+                      <%= f.submit 'Reject', class: 'btn btn-light' %>
+                    <% end %>
+                  </div>
+                <% else %>
+                  <p class='booking-tag'><%= booking.status %></p>
+                <% end %>
+                <%= "#{booking.start_date.to_time.strftime('%B %e')} - "%>
+                <%= booking.end_date.to_time.strftime('%B %e') %>
+              </div>
+              <h2 class="card-vinyl-pricing"> <%= "¥#{booking.offer.price}" %> </h2>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="tab-pane fade py-3" id="conversations-tab-pane" role="tabpanel" aria-labelledby="conversations-tab" tabindex="0">
+      This is the content for the Conversations tab. Notice in the tab HTML there is a href="#converstations". This is pointing to the id of this div.
+    </div>
   </div>
-  <h3 id="pending-header"> > Confirmed Offers (0) </h3>
-  <h3 id="pending-header"> > Completed (0) </h3>
-</div>
