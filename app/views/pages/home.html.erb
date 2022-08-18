@@ -3,26 +3,32 @@
     <h1>Tokyo Vinyls</h1>
     <p>Share your favorite records with the world</p>
     <div class="btn btn-flat">
-     <%= link_to 'Browse', vinyls_path %>
+      <%= link_to 'Browse', vinyls_path %>
     </div>
+    <%= form_tag vinyls_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find a vinyl"%>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
   </div>
 </div>
-
 <div class="display-cards">
   <h2 id="landing-header">Top Offers</h2>
   <div class="card-row">
     <% @offers.each do |offer| %>
       <%=link_to offer_path(offer) do %>
-      <div class="card-vinyl mx-2" >
-        <%= image_tag offer.vinyl.img_url %>
-        <div class="card-vinyl-infos">
-          <div class='truncate'>
-            <h2> <%= offer.vinyl.name %> </h2>
-            <p> <%= offer.vinyl.artist %> </p>
+        <div class="card-vinyl mx-2" >
+          <%= image_tag offer.vinyl.img_url %>
+          <div class="card-vinyl-infos">
+            <div class='truncate'>
+              <h2> <%= offer.vinyl.name %> </h2>
+              <p> <%= offer.vinyl.artist %> </p>
+            </div>
+            <h2 class="card-vinyl-pricing"> <%= offer.price %> JPY </h2>
           </div>
-          <h2 class="card-vinyl-pricing"> <%= offer.price %> JPY </h2>
         </div>
-      </div>
       <% end %>
     <% end %>
   </div>
