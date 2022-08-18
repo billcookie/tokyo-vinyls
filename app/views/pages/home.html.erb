@@ -5,13 +5,15 @@
     <div class="btn btn-flat">
       <%= link_to 'Browse', vinyls_path %>
     </div>
-    <%= form_tag vinyls_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Find a vinyl"%>
-      <%= submit_tag "Search", class: "btn btn-primary" %>
-    <% end %>
+    <div class="col-sm-4">
+      <%= form_tag vinyls_path, method: :get, class: "d-flex my-3" do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Search"%>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
 </div>
 <div class="display-cards">
