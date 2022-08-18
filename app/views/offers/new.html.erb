@@ -1,6 +1,6 @@
 <div class="container mb-2">
   <%= simple_form_for(@offer) do |f| %>
-    <%= f.association :vinyl%>
+    <%= f.association :vinyl, collection: Vinyl.order('name ASC')%>
     <%= f.input :price%>
     <%= f.input :condition%>
     <%= f.input :description %>

@@ -16,31 +16,45 @@ puts "seeding users....."
 puts "seeding offers....."
 puts "seeding bookings...."
 # the Le Wagon copy of the API
-wrapper = Discogs::Wrapper.new("Tokyo Vinyls", user_token: ENV["DISCOGS_TOKEN"])
+api = Discogs::Wrapper.new("Tokyo Vinyls", user_token: ENV["DISCOGS_TOKEN"])
 
-artist_ids = [2508414, 65049, 304053, 3852273]
+artist_ids = [3852273, 65049]
+search = api.search(artist_ids, :per_page => 10)
+
+releases = search["results"]
+
+
+
+releases.map do |release|
+  release_data = api.get_release(release["id"])
+
+  releases = search["results"]
+  # itterate over each results to get its details using get_release
+
+  composer = Artist.find_or_initialize_by(
+          name: release_data["artists"].first["name"]
+         )
+  phonograph = Vinyl.new(
+          name: release_data["title"],
+          publishing_year: release_data["year"].to_i,
+          img_url: release_data["images"][0]["uri"],
+          genre: release_data["genres"].first,
+          artist: composer
+        )
+  phonograph.artist = composer
+  phonograph.save!
+end
 
 artist_ids.each do |artist_id|
-  data2 = wrapper.get_artist(artist_id)
-  data1 = wrapper.get_artist_releases(artist_id)
 
-
-    composer = Artist.create!(
-        name: data2["name"],
-        profile: data2["profile"],
-        profile_img: data2["images"][0]["uri"]
-      )
-
-
-    data1["releases"].each do |release|
-    phonograph = Vinyl.new(
-        name: release["title"],
-        publishing_year: release["year"],
-        img_url: release["thumb"]
-      )
-    phonograph.artist = composer
-    phonograph.save!
-    end
+  data2 = api.get_artist(artist_id)
+  composer = Artist.find_by(name: data2["name"])
+  if composer
+    composer.update(
+      profile: data2["profile"],
+      profile_img: data2["images"][0]["uri"]
+    )
+  end
 end
 
 10.times do
@@ -83,6 +97,7 @@ User.create!(
 addresses_file = File.open('db/locations.yml').read
 addresses = YAML.load(addresses_file)
 
+
 User.all.each do |user|
   offer = Offer.new(
     price: [100, 200, 300].sample,
@@ -96,13 +111,14 @@ User.all.each do |user|
 end
 
 User.all.each do |user|
-  booking = Booking.new(
-    user: user,
-    offer: Offer.where.not(id: user.offers).sample,
-    start_date: Date.today + rand(5..10),
-    end_date: Date.today + rand(11..15)
-  )
-  booking.save!
+  rand(1..6).times do
+    Booking.create!(
+      user: user,
+      offer: Offer.where.not(id: user.offers).sample,
+      start_date: Date.today + rand(5..10),
+      end_date: Date.today + rand(11..15)
+    )
+  end
 end
 
 
@@ -131,3 +147,7 @@ puts "finished seeding booking"
 
 # images
 # 57103
+
+
+# img_url: release_data["images"].first["uri"],
+#       genre: release_data["genres"].first,

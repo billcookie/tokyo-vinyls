@@ -18,6 +18,7 @@ class OffersController < ApplicationController
 
   def new
     @offer = Offer.new
+    @offer.build_vinyl
     authorize @offer
   end
 
@@ -25,8 +26,10 @@ class OffersController < ApplicationController
     @offer = Offer.new(offer_params)
     @offer.user = current_user
     authorize @offer
-    @vinyl = Vinyl.find(offer_params[:vinyl_id])
-    @offer.vinyl = @vinyl
+    if offer_params[:vinyl_id]
+      @vinyl = Vinyl.find(offer_params[:vinyl_id])
+      @offer.vinyl = @vinyl
+    end
     if @offer.save
       redirect_to offers_path
       flash[:alert] = "New Offer Successfully Created"
