@@ -23,6 +23,8 @@ search = api.search(artist_ids, :per_page => 10)
 
 releases = search["results"]
 
+
+
 releases.map do |release|
   release_data = api.get_release(release["id"])
 
@@ -43,6 +45,17 @@ releases.map do |release|
   phonograph.save!
 end
 
+artist_ids.each do |artist_id|
+
+  data2 = api.get_artist(artist_id)
+  composer = Artist.find_by(name: data2["name"])
+  if composer
+    composer.update(
+      profile: data2["profile"],
+      profile_img: data2["images"][0]["uri"]
+    )
+  end
+end
 
 10.times do
   User.create!(
@@ -98,13 +111,14 @@ User.all.each do |user|
 end
 
 User.all.each do |user|
-  booking = Booking.new(
-    user: user,
-    offer: Offer.where.not(id: user.offers).sample,
-    start_date: Date.today + rand(5..10),
-    end_date: Date.today + rand(11..15)
-  )
-  booking.save!
+  rand(1..6).times do
+    Booking.create!(
+      user: user,
+      offer: Offer.where.not(id: user.offers).sample,
+      start_date: Date.today + rand(5..10),
+      end_date: Date.today + rand(11..15)
+    )
+  end
 end
 
 
