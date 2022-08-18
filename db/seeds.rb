@@ -16,32 +16,33 @@ puts "seeding users....."
 puts "seeding offers....."
 puts "seeding bookings...."
 # the Le Wagon copy of the API
-wrapper = Discogs::Wrapper.new("Tokyo Vinyls", user_token: ENV["DISCOGS_TOKEN"])
+api = Discogs::Wrapper.new("Tokyo Vinyls", user_token: ENV["DISCOGS_TOKEN"])
 
-artist_ids = [2508414, 65049, 304053, 3852273]
+artist_ids = [3852273, 65049]
+search = api.search(artist_ids, :per_page => 10)
 
-artist_ids.each do |artist_id|
-  data2 = wrapper.get_artist(artist_id)
-  data1 = wrapper.get_artist_releases(artist_id)
+releases = search["results"]
 
+releases.map do |release|
+  release_data = api.get_release(release["id"])
 
-    composer = Artist.create!(
-        name: data2["name"],
-        profile: data2["profile"],
-        profile_img: data2["images"][0]["uri"]
-      )
+  releases = search["results"]
+  # itterate over each results to get its details using get_release
 
-
-    data1["releases"].each do |release|
-    phonograph = Vinyl.new(
-        name: release["title"],
-        publishing_year: release["year"],
-        img_url: release["thumb"]
-      )
-    phonograph.artist = composer
-    phonograph.save!
-    end
+  composer = Artist.find_or_initialize_by(
+          name: release_data["artists"].first["name"]
+         )
+  phonograph = Vinyl.new(
+          name: release_data["title"],
+          publishing_year: release_data["year"].to_i,
+          img_url: release_data["images"][0]["uri"],
+          genre: release_data["genres"].first,
+          artist: composer
+        )
+  phonograph.artist = composer
+  phonograph.save!
 end
+
 
 10.times do
   User.create!(
@@ -136,24 +137,3 @@ puts "finished seeding booking"
 
 # img_url: release_data["images"].first["uri"],
 #       genre: release_data["genres"].first,
-
-# def api_results
-#   api = Discogs::Wrapper.new("Tokyo Vinyls", user_token: ENV["DISCOGS_TOKEN"])
-#   search = api.search(params[:query], :per_page => 10)
-
-#   # when we search will have search results which will be releases
-#   releases = search["results"]
-#   # itterate over each results to get its details using get_release
-#   releases.map do |release|
-#     release_data = api.get_release(release["id"])
-#     # For each of these we need to build instances of a vinyl + artists
-#     artist = Artist.find_or_initialize_by(
-#       name: release_data["artists"].first["name"]
-#     )
-#     Vinyl.new(
-#       name: release_data["title"],
-#       publishing_year: release_data["year"].to_i,
-#       img_url: release_data["images"][0]["uri"],
-#       genre: release_data["genres"].first,
-#       artist: artist
-#     )
