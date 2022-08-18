@@ -1,13 +1,41 @@
-<h1>SHOW PAGE OF ONE VINYL</h1>
-<div class="card-vinyl" >
-    <%= image_tag @vinyl.img_url, alt: "vinyl img_url" %>
-    <div class="card-vinyl-infos">
-      <div>
-        <h2> <%= @vinyl.name %> </h2>
-        <p> <%= @vinyl.artist.name %> </p>
-      </div>
-      <h2 class="card-vinyl-pricing"> <%= @vinyl.publishing_year %> </h2>
-    </div>
+<div class="sub-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path @vinyl.artist.profile_img, alt: "artist profile image"  %>);">
+  <div class="container">
+    <h1><%= @vinyl.artist.name %></h1>
+  </div>
 </div>
-<%= @vinyl.artist.profile %>
-<%= image_tag @vinyl.artist.profile_img, alt: "artist profile image" %>
+
+<div class="display-cards">
+  <h2 class="page-header">Offers for <%= @vinyl.name %></h2>
+  <div class="main-container">
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <% @offers.each do |offer| %>
+        <div class="offer-card">
+          <div class="overlay">
+              <%= link_to 'Book now', offer_path(offer), class: "btn btn-flat" %>
+          </div>
+          <div class="offer-card-img"> <%= image_tag offer.vinyl.img_url %> </div>
+          <div class="offer-card-infos" style="width: 100%;">
+            <div class="info-content d-flex justify-content-center align-items-center flex-column">
+              <h2 class="offer-card-pricing"> <%= offer.price %> ¥</h2>
+              <div>
+                <p> <%= offer.description %> </p>
+                <p> <i class="fa-solid fa-location-dot"></i> <%= offer.location %> </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+
+      <!-- Map -->
+      <div class="col-12 col-md-6">
+        <%= render 'shared/map', markers: @markers.to_json %>
+      </div>
+    </div>
+  </div>
+  <!-- Artist Profile
+  <%= @vinyl.artist.profile %>
+  <%= image_tag @vinyl.artist.profile_img, alt: "artist profile image" %>
+  -->
+</div>
