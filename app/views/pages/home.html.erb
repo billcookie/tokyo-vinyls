@@ -12,7 +12,7 @@
   <h2 id="landing-header">Top Offers</h2>
   <div class="card-row">
     <% @offers.each do |offer| %>
-      <%=link_to offer_path(offer) do %>
+      <%=link_to vinyl_path(offer.vinyl) do %>
       <div class="card-vinyl mx-2" >
         <%= image_tag offer.vinyl.img_url %>
         <div class="card-vinyl-infos">

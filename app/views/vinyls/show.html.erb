@@ -7,23 +7,30 @@
 <div class="display-cards">
   <h2 class="page-header">Offers for <%= @vinyl.name %></h2>
   <div class="main-container">
-    <div class="offer-card">
-      <% @offers.each do |offer| %>
-        <div class="offer-img">
-          <%= image_tag offer.vinyl.img_url %>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <% @offers.each do |offer| %>
+        <div class="offer-card">
+          <div class="overlay">
+              <%= link_to 'Book now', offer_path(offer), class: "btn btn-flat" %>
+          </div>
+          <div class="offer-card-img"> <%= image_tag offer.vinyl.img_url %> </div>
+          <div class="offer-card-infos">
+            <h2 class="offer-card-pricing"> <%= offer.price %> ¥</h2>
+            <div>
+              <p> <%= offer.description %> </p>
+              <p> <i class="fa-solid fa-location-dot"></i> <%= offer.location %> </p>
+            </div>
+          </div>
         </div>
-        <div class="card-product-infos">
-          <h2> <%= offer.location %> </h2>
-          <p> <%= offer.description %> </p>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
 
-  <!-- Map -->
-    <div class="col-12 col-md-8">
-      <%= render 'shared/map', markers: @markers.to_json %>
+      <!-- Map -->
+      <div class="col-12 col-md-6">
+        <%= render 'shared/map', markers: @markers.to_json %>
+      </div>
     </div>
-
   </div>
   <!-- Artist Profile
   <%= @vinyl.artist.profile %>
