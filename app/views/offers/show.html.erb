@@ -2,9 +2,29 @@
   <h1>Your offer</h1>
   <%=  image_tag @offer.vinyl.img_url %>
   <%=  @offer.vinyl.name %>
+  <%   @offer.condition %>
   <%=  @offer.description %>
   <%=  @offer.price %>
-  <%= link_to "Go Back", offers_path, class: "btn button" %>
-  <%= link_to class: "btn btn-primary" %>
-  <%= render "bookings/form" %>
+  <div class="col-sm-4">
+  </div>
+</div>
+<div class="container mt-5 mb-5 d-flex justify-content-center">
+  <div class="card px-1 py-4">
+    <div class="card-body">
+      <h6 class="card-title mb-3">Make a booking for <em> <%=  @offer.vinyl.name %></em></h6>
+      <h6 class="information mt-4">Please select which dates you want to book <%=  @offer.vinyl.name %> </h6>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <%= simple_form_for [@offer, @booking]  do |f| %>
+              <%= f.input :start_date, as: :date, html5: true %>
+              <%= f.input :end_date, as: :date, html5: true %>
+              <div><%= link_to 'Book now', offers_path, class: "btn btn-flat" %></div>
+            <% end %>
+            <!-- <label for="name">Name</label> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
