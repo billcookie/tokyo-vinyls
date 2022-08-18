@@ -18,7 +18,7 @@ puts "seeding bookings...."
 # the Le Wagon copy of the API
 api = Discogs::Wrapper.new("Tokyo Vinyls", user_token: ENV["DISCOGS_TOKEN"])
 
-artist_ids = [3852273, 65049]
+artist_ids = [3852273, 65049, 95886]
 search = api.search(artist_ids, :per_page => 10)
 
 releases = search["results"]
@@ -57,7 +57,7 @@ artist_ids.each do |artist_id|
   end
 end
 
-10.times do
+16.times do
   User.create!(
     email: Faker::Internet.email,
     first_name: Faker::Name.first_name,
@@ -69,29 +69,29 @@ end
 User.create!(
   email: "billcook8122@gmail.com",
   password: "123123",
-  first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name
+  first_name: "Bill",
+  last_name: "Cook"
 )
 
 User.create!(
   email: "willmes.carla@gmail.com",
   password: "123123",
-  first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name
+  first_name: "Carla",
+  last_name: "Willmes"
 )
 
 User.create!(
   email: "ayakayakaaaa@gmail.com",
   password: "123123",
-  first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name
+  first_name: "Ayaka",
+  last_name: "Inaba"
 )
 
 User.create!(
   email: "jdchappelow@gmail.com",
   password: "123123",
-  first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name
+  first_name: "Joshy",
+  last_name: "Woshy"
 )
 
 addresses_file = File.open('db/locations.yml').read
@@ -99,15 +99,16 @@ addresses = YAML.load(addresses_file)
 
 
 User.all.each do |user|
-  offer = Offer.new(
-    price: [100, 200, 300].sample,
-    user: user,
-    description: Faker::Quotes::Shakespeare.hamlet_quote,
-    vinyl: Vinyl.all.sample,
-    condition: ["good", "bad", "ok"].sample,
-    location: addresses.sample
-  )
-  offer.save!
+  rand(1..10).times do
+    Offer.create!(
+      price: [100, 200, 300].sample,
+      user: user,
+      description: Faker::Quotes::Shakespeare.hamlet_quote,
+      vinyl: Vinyl.all.sample,
+      condition: ["good", "bad", "ok"].sample,
+      location: addresses.sample
+    )
+  end
 end
 
 User.all.each do |user|
