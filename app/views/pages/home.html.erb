@@ -3,11 +3,19 @@
     <h1>Tokyo Vinyls</h1>
     <p>Share your favorite records with the world</p>
     <div class="btn btn-flat">
-     <%= link_to 'Browse', vinyls_path %>
+      <%= link_to 'Browse', vinyls_path %>
+    </div>
+    <div class="col-sm-4">
+      <%= form_tag vinyls_path, method: :get, class: "d-flex my-3" do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Search"%>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 </div>
-
 <div class="display-cards">
   <h2 id="landing-header">Top Offers</h2>
   <div class="card-row">
@@ -22,7 +30,6 @@
           </div>
           <h2 class="card-vinyl-pricing"> <%= offer.price %> ¥</h2>
         </div>
-      </div>
       <% end %>
     <% end %>
   </div>
