@@ -83,6 +83,7 @@ User.create!(
 addresses_file = File.open('db/locations.yml').read
 addresses = YAML.load(addresses_file)
 
+
 User.all.each do |user|
   offer = Offer.new(
     price: [100, 200, 300].sample,
@@ -131,3 +132,28 @@ puts "finished seeding booking"
 
 # images
 # 57103
+
+
+# img_url: release_data["images"].first["uri"],
+#       genre: release_data["genres"].first,
+
+# def api_results
+#   api = Discogs::Wrapper.new("Tokyo Vinyls", user_token: ENV["DISCOGS_TOKEN"])
+#   search = api.search(params[:query], :per_page => 10)
+
+#   # when we search will have search results which will be releases
+#   releases = search["results"]
+#   # itterate over each results to get its details using get_release
+#   releases.map do |release|
+#     release_data = api.get_release(release["id"])
+#     # For each of these we need to build instances of a vinyl + artists
+#     artist = Artist.find_or_initialize_by(
+#       name: release_data["artists"].first["name"]
+#     )
+#     Vinyl.new(
+#       name: release_data["title"],
+#       publishing_year: release_data["year"].to_i,
+#       img_url: release_data["images"][0]["uri"],
+#       genre: release_data["genres"].first,
+#       artist: artist
+#     )

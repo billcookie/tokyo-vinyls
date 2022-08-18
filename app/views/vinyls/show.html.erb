@@ -1,13 +1,15 @@
 <h1>SHOW PAGE OF ONE VINYL</h1>
 <div class="card-vinyl" >
-    <%= image_tag @vinyl.img_url, alt: "vinyl img_url" %>
-    <div class="card-vinyl-infos">
-      <div>
-        <h2> <%= @vinyl.name %> </h2>
-        <p> <%= @vinyl.artist.name %> </p>
-      </div>
-      <h2 class="card-vinyl-pricing"> <%= @vinyl.publishing_year %> </h2>
+  <%= image_tag @vinyl.img_url, alt: "vinyl img_url" %>
+  <div class="card-vinyl-infos">
+    <div>
+      <h2> <%= @vinyl.name %> </h2>
+      <p> <%= @vinyl.artist.name %> </p>
     </div>
+    <h2 class="card-vinyl-pricing"> <%= @vinyl.publishing_year %> </h2>
+  </div>
 </div>
 <%= @vinyl.artist.profile %>
-<%= image_tag @vinyl.artist.profile_img, alt: "artist profile image" %>
+<% if @vinyl.artist.profile_img %>
+  <%= image_tag @vinyl.artist.profile_img , alt: "artist profile image" %>
+<% end %>

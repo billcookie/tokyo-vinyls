@@ -1,10 +1,2 @@
 <div class="container mb-2">
-  <%= simple_form_for(@offer) do |f| %>
-    <%= f.association :vinyl, collection: Vinyl.order('name ASC')%>
-    <%= f.input :price%>
-    <%= f.input :condition%>
-    <%= f.input :description %>
-    <%= f.input :location%>
-    <%= f.submit class: "btn btn-flat mb-2"%>
-  <% end %>
 </div>
