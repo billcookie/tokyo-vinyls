@@ -1,13 +1,25 @@
-<h1>SHOW PAGE OF ONE VINYL</h1>
-<div class="card-vinyl" >
-    <%= image_tag @vinyl.img_url, alt: "vinyl img_url" %>
-    <div class="card-vinyl-infos">
-      <div>
-        <h2> <%= @vinyl.name %> </h2>
-        <p> <%= @vinyl.artist.name %> </p>
+<h2 id="page-header"><%= @vinyl.name %> – <%= @vinyl.artist.name %></h2>
+
+<div class="display-offers">
+  <div class="offer-card">
+    <% @offers.each do |offer| %>
+      <%= image_tag offer.vinyl.img_url %>
+      <div class="card-product-infos">
+        <h2> <%= offer.location %> </h2>
+        <p> <%= offer.description %> </p>
       </div>
-      <h2 class="card-vinyl-pricing"> <%= @vinyl.publishing_year %> </h2>
-    </div>
+    <% end %>
+  </div>
 </div>
+
+
+<!-- Map -->
+<div class="col-12 col-md-8">
+  <%= render 'shared/map', markers: @markers.to_json %>
+</div>
+
+
+<!-- Artist Profile
 <%= @vinyl.artist.profile %>
 <%= image_tag @vinyl.artist.profile_img, alt: "artist profile image" %>
+-->
