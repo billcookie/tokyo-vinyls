@@ -17,7 +17,7 @@
         <% @bookings.each do |booking| %>
           <div class="card-vinyl" >
             <%= image_tag booking.offer.vinyl.img_url %>
-            <%= link_to booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Delete?" }, class: 'card-remove-link' do %>
+            <%= link_to booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Delete offer for #{booking.offer.vinyl.name}?"}, class: 'card-remove-link' do %>
               <i class="fa-solid fa-ban fa-lg"></i>
             <% end %>
             <div>

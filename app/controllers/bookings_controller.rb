@@ -17,6 +17,7 @@ class BookingsController < ApplicationController
     @booking.offer = @offer
     if @booking.save
       redirect_to bookings_path
+      flash[:alert] = "New Booking Successfully Created"
     else
       render :new, status: :unprocessable_entity
     end
@@ -27,6 +28,7 @@ class BookingsController < ApplicationController
     authorize @booking
     if @booking.update(booking_params)
       redirect_to bookings_path
+      flash[:alert] = "Booking Status Updated"
     else
       @bookings = policy_scope(Booking)
       @bookings_as_owner = current_user.bookings_as_owner
@@ -39,6 +41,7 @@ class BookingsController < ApplicationController
     authorize @booking
     @booking.destroy
     redirect_to bookings_path, status: :see_other
+    flash[:alert] = "Vinyl Offer Successfully Deleted"
   end
 
   private
