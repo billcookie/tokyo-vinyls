@@ -33,6 +33,12 @@ class OffersController < ApplicationController
     end
   end
 
+  # def price_calc
+  #   start = Date.parse(params[:startDate])
+  #   end_date = Date.parse(params[:endDate])
+  #   price = @vehicle.cost * (end - start).to_i
+  # end
+
   private
 
   def offer_params
