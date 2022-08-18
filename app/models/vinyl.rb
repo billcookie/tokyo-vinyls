@@ -3,7 +3,6 @@ class Vinyl < ApplicationRecord
   has_many :offers
   validates :name, presence: true
   validates :artist, presence: true
-
   include PgSearch::Model
   pg_search_scope :song_artist_search,
     against: [:name, :song],

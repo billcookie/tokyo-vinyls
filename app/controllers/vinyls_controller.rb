@@ -13,4 +13,20 @@ class VinylsController < ApplicationController
   def show
     @vinyl = Vinyl.find(params[:id])
   end
+
+
+  def new
+    @vinyl = Vinyl.new
+  end
+
+  def create
+    @vinyl = Vinyl.new
+    @offer.user = current_user
+    authorize @vinyl
+    if vinyl.save
+      redirect_to vinyl_path(@vinyl)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
 end
