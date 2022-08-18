@@ -15,11 +15,13 @@
               <%= link_to 'Book now', offer_path(offer), class: "btn btn-flat" %>
           </div>
           <div class="offer-card-img"> <%= image_tag offer.vinyl.img_url %> </div>
-          <div class="offer-card-infos">
-            <h2 class="offer-card-pricing"> <%= offer.price %> ¥</h2>
-            <div>
-              <p> <%= offer.description %> </p>
-              <p> <i class="fa-solid fa-location-dot"></i> <%= offer.location %> </p>
+          <div class="offer-card-infos" style="width: 100%;">
+            <div class="info-content d-flex justify-content-center align-items-center flex-column">
+              <h2 class="offer-card-pricing"> <%= offer.price %> ¥</h2>
+              <div>
+                <p> <%= offer.description %> </p>
+                <p> <i class="fa-solid fa-location-dot"></i> <%= offer.location %> </p>
+              </div>
             </div>
           </div>
         </div>
