@@ -1,0 +1,22 @@
+.display-cards {
+  background-color: #201e1f;
+  text-align: center;
+  padding: 40px;
+
+  #bookings-header {
+    font-size: 24px;
+    font-family: "Encode Sans Condensed", sans-serif;
+    text-transform: uppercase;
+    font-weight: 100;
+    color: white;
+  }
+
+  #pending-header {
+    font-size: 24px;
+    font-family: "Encode Sans Condensed", sans-serif;
+    text-transform: uppercase;
+    font-weight: 100;
+    color: white;
+    text-align: left;
+  }
+}

@@ -1,12 +1,7 @@
 .cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
-}
-
-.card-row {
-  display: flex;
-  overflow: scroll;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 24px;
   padding: 40px;
 }
 
@@ -45,35 +40,35 @@
   }
 }
 
-.card-vinyl {
+.card-offer {
   overflow: hidden;
   background: rgb(240, 240, 240);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   width: 250px;
-  height: 330px;
-  margin-bottom: 16px;
+  height: 300px;
+  border-radius: 3px;
 }
 
-.card-vinyl > img {
-  height: 250px;
+.card-offer > img {
+  height: 200px;
   width: 250px;
   object-fit: cover;
 }
 
-.card-vinyl h2 {
+.card-offer h2 {
   font-size: 14px;
   margin: 0;
   text-align: left;
 }
 
-.card-vinyl p {
+.card-offer p {
   font-size: 10px;
   opacity: 0.7;
   margin: 0;
   text-align: left;
 }
 
-.card-vinyl .card-vinyl-infos {
+.card-offer .card-offer-infos {
   color: #201e1f;
   font-family: "Encode Sans Condensed", sans-serif;
   text-transform: uppercase;
@@ -82,14 +77,4 @@
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.truncate {
-  width: 250px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
