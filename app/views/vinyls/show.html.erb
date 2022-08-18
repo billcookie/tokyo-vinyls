@@ -1,25 +1,32 @@
-<h2 id="page-header"><%= @vinyl.name %> – <%= @vinyl.artist.name %></h2>
-
-<div class="display-offers">
-  <div class="offer-card">
-    <% @offers.each do |offer| %>
-      <%= image_tag offer.vinyl.img_url %>
-      <div class="card-product-infos">
-        <h2> <%= offer.location %> </h2>
-        <p> <%= offer.description %> </p>
-      </div>
-    <% end %>
+<div class="sub-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path @vinyl.artist.profile_img, alt: "artist profile image"  %>);">
+  <div class="container">
+    <h1><%= @vinyl.artist.name %></h1>
   </div>
 </div>
 
+<div class="display-cards">
+  <h2 class="page-header">Offers for <%= @vinyl.name %></h2>
+  <div class="main-container">
+    <div class="offer-card">
+      <% @offers.each do |offer| %>
+        <div class="offer-img">
+          <%= image_tag offer.vinyl.img_url %>
+        </div>
+        <div class="card-product-infos">
+          <h2> <%= offer.location %> </h2>
+          <p> <%= offer.description %> </p>
+        </div>
+      <% end %>
+    </div>
 
-<!-- Map -->
-<div class="col-12 col-md-8">
-  <%= render 'shared/map', markers: @markers.to_json %>
+  <!-- Map -->
+    <div class="col-12 col-md-8">
+      <%= render 'shared/map', markers: @markers.to_json %>
+    </div>
+
+  </div>
+  <!-- Artist Profile
+  <%= @vinyl.artist.profile %>
+  <%= image_tag @vinyl.artist.profile_img, alt: "artist profile image" %>
+  -->
 </div>
-
-
-<!-- Artist Profile
-<%= @vinyl.artist.profile %>
-<%= image_tag @vinyl.artist.profile_img, alt: "artist profile image" %>
--->
