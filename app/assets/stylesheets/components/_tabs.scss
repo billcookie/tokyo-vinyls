@@ -7,7 +7,7 @@
     color: white;
     padding: 8px;
     margin: 8px 16px;
-    opacity: .4;
+    opacity: 0.4;
     cursor: pointer;
     text-decoration: none;
     border-bottom: 4px solid transparent;
@@ -23,6 +23,6 @@
   }
   .tab-underlined.active {
     opacity: 1;
-    border-bottom: 3px solid #555555;
+    transition: opacity 0.15s linear;
   }
 }
