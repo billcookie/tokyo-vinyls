@@ -3,26 +3,26 @@
   <div class="btn btn-flat">
     <%= link_to 'Create', new_offer_path  %>
   </div>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12 col-md-4">
-      <div class="mb-5">
-        <% @offers.each do |offer| %>
-          <%= link_to offer_path(offer) do %>
-            <div class="card-vinyl" >
-              <%= image_tag offer.vinyl.img_url %>
-              <div class="card-vinyl-infos">
-                <div>
-                  <h2> <%= offer.vinyl.name %> </h2>
-                  <p><%= offer.condition %></p>
-                  <p> <%= offer.price %>円</p>
-                  <p><%= offer.location %></p>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-md-4">
+        <div class="mb-5">
+          <% @offers.each do |offer| %>
+            <%= link_to offer_path(offer) do %>
+              <div class="card-vinyl" >
+                <%= image_tag offer.vinyl.img_url %>
+                <div class="card-vinyl-infos">
+                  <div>
+                    <h2> <%= offer.vinyl.name %> </h2>
+                    <p><%= offer.condition %></p>
+                    <p> <%= offer.price %>円</p>
+                    <p><%= offer.location %></p>
+                  </div>
+                  <h2 class="card-vinyl-pricing"> </h2>
                 </div>
-                <h2 class="card-vinyl-pricing"> </h2>
               </div>
-            </div>
-          <% end %>
-        <% end  %>
+            <% end %>
+          <% end  %>
         </div>
       </div>
       <div class="col-12 col-md-8">
