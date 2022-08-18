@@ -4,7 +4,8 @@ class OffersController < ApplicationController
     @markers = @offers.geocoded.map do |offer|
       {
         lat: offer.latitude,
-        lng: offer.longitude
+        lng: offer.longitude,
+        info_window: render_to_string(partial: "offers/popup", locals: { offer: offer })
       }
     end
   end
@@ -31,6 +32,7 @@ class OffersController < ApplicationController
     end
     if @offer.save
       redirect_to offers_path
+      flash[:alert] = "New Offer Successfully Created"
     else
       render :new, status: :unprocessable_entity
     end
