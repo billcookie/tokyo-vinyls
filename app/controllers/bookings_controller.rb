@@ -10,7 +10,6 @@ class BookingsController < ApplicationController
   end
 
   def create
-
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     authorize @booking
@@ -24,7 +23,6 @@ class BookingsController < ApplicationController
   end
 
   def update
-
     @booking = Booking.find(params[:id])
     authorize @booking
     if @booking.update(booking_params)
@@ -34,6 +32,13 @@ class BookingsController < ApplicationController
       @bookings_as_owner = current_user.bookings_as_owner
       render :index
     end
+  end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.destroy
+    redirect_to bookings_path, status: :see_other
   end
 
   private
