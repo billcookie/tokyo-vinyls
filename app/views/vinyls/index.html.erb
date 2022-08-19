@@ -20,7 +20,6 @@
       <% end %>
     </div>
     <% if @api_vinyls %>
-      <h3>More Results</h3>
       <div class="cards">
         <% @api_vinyls.each do |vinyl| %>
           <%= simple_form_for(vinyl) do |f| %>
