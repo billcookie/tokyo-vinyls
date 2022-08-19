@@ -5,6 +5,9 @@
 </div>
 <div class="display-cards">
   <h2 class="page-header">All offers for <%= @vinyl.name %></h2>
+  <div class="btn create-btn">
+    <%= link_to 'Create Offer', "/vinyls/#{@vinyl.id}/offers/new" %>
+  </div>
 
   <div class="container main-grid">
     <div class="offer-cards">
@@ -32,7 +35,4 @@
   <%#= @vinyl.artist.profile %>
   <%#= image_tag @vinyl.artist.profile_img, alt: "artist profile image" %>
   -->
-</div>
-<div class="btn btn-flat">
-  <%= link_to 'Create', "/vinyls/#{@vinyl.id}/offers/new" %>
 </div>
