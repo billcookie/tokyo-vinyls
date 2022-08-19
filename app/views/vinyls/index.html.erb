@@ -1,20 +1,52 @@
-<div class="display-cards">
-  <h2 id="page-header">Vinyls</h2>
-  <div class="cards">
-    <% @vinyls.each do |vinyl| %>
-      <%= link_to vinyl_path(vinyl) do %>
-      <div class="card-vinyl" >
-        <%= image_tag vinyl.img_url %>
-
-        <div class="card-vinyl-infos">
-          <div>
-            <h2> <%= vinyl.name %> </h2>
-            <p> <%= vinyl.artist.name %> </p>
+<div class="container">
+  <div class="display-cards">
+    <h2 class="page-header">Vinyls</h2>
+    <div class="cards">
+      <% @vinyls.each do |vinyl| %>
+        <%= link_to vinyl_path(vinyl) do %>
+          <div class="card-vinyl" >
+            <%= image_tag vinyl.img_url %>
+            <div class="card-vinyl-infos">
+              <div>
+                <h2> <%= vinyl.name %> </h2>
+                <p> <%= vinyl.artist.name %> </p>
+                <p> <%= vinyl.genre %></p>
+                <p><%= vinyl.offers.count %></p>
+              </div>
+              <h2 class="card-vinyl-pricing"> <%= vinyl.publishing_year %> </h2>
+            </div>
           </div>
-          <h2 class="card-vinyl-pricing"> <%= vinyl.publishing_year %> </h2>
-        </div>
-      </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+    <% if @api_vinyls %>
+      <h3>More Results</h3>
+      <div class="cards">
+        <% @api_vinyls.each do |vinyl| %>
+          <%= simple_form_for(vinyl) do |f| %>
+            <%= f.input :name, as: :hidden%>
+            <%= f.association :artist, as: :hidden%>
+            <%= f.input :publishing_year, as: :hidden%>
+            <%= f.input :img_url, as: :hidden %>
+            <%= f.simple_fields_for :artist do |f_artist| %>
+              <%= f_artist.input :name, as: :hidden%>
+            <% end %>
+            <%= button_tag(type: 'submit') do %>
+              <div class="card-vinyl" >
+                <%= image_tag vinyl.img_url %>
+                <div class="card-vinyl-infos">
+                  <div>
+                    <h2> <%= vinyl.name %> </h2>
+                    <p> <%= vinyl.artist.name %> </p>
+                    <p> <%= vinyl.genre %></p>
+                  </div>
+                  <h2 class="card-vinyl-pricing"> <%= vinyl.publishing_year %> </h2>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

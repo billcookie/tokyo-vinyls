@@ -1,10 +1,32 @@
-<div class = "container">
-  <h1>Your offer</h1>
-  <%=  image_tag @offer.vinyl.img_url %>
-  <%=  @offer.vinyl.name %>
-  <%=  @offer.description %>
-  <%=  @offer.price %>
-  <%= link_to "Go Back", offers_path, class: "btn button" %>
-  <%= link_to class: "btn btn-primary" %>
-  <%= render "bookings/form" %>
+<div class="d-flex justify-content-around">
+  <div class="offer-card-long" >
+    <%= image_tag @offer.vinyl.img_url %>
+    <div class="offer-card-long-infos">
+      <div class='truncate'>
+        <h2> <%= @offer.vinyl.name %> </h2>
+        <p> <%= @offer.description %> </p>
+        <p><i class="fa-solid fa-location-dot"></i> <%= @offer.location %></p>
+        <p class="offer-card-long-pricing"><%= @offer.price %> ¥ / Day</p>
+      </div>
+    </div>
+  </div>
+  <div class="card px-1 py-4">
+    <div class="card-body">
+      <h6 class="card-title mb-3">Make a booking for <em> <%=  @offer.vinyl.name %></em></h6>
+      <h6 class="information mt-4">Please select which dates you want to book <%=  @offer.vinyl.name %> </h6>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <%= simple_form_for [@offer, @booking]  do |f| %>
+              <%= f.input :start_date, as: :date, html5: true %>
+              <%= f.input :end_date, as: :date, html5: true %>
+              <%= f.submit class: "btn btn-flat"%>
+            <% end %>
+            <!-- <label for="name">Name</label> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>

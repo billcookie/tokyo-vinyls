@@ -4,6 +4,24 @@
   grid-gap: 16px;
 }
 
+.card-vinyl {
+  position: relative;
+}
+
+.card-remove-link {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  text-decoration: none;
+  color: $red;
+  opacity: 0.8;
+  &:hover {
+    color: $red;
+    opacity: 1;
+    text-decoration: none;
+  }
+}
+
 .card-row {
   display: flex;
   overflow: scroll;
@@ -49,9 +67,10 @@
   overflow: hidden;
   background: rgb(240, 240, 240);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  width: 250px;
-  height: 330px;
+  width: 260px;
+  height: 350px;
   margin-bottom: 16px;
+  position: relative;
 }
 
 .card-vinyl > img {
@@ -61,14 +80,14 @@
 }
 
 .card-vinyl h2 {
-  font-size: 14px;
+  font-size: 18px;
   margin: 0;
   text-align: left;
 }
 
 .card-vinyl p {
   font-size: 10px;
-  opacity: 0.7;
+  opacity: 1;
   margin: 0;
   text-align: left;
 }
@@ -77,7 +96,7 @@
   color: #201e1f;
   font-family: "Encode Sans Condensed", sans-serif;
   text-transform: uppercase;
-  padding: 16px;
+  padding: 14px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -85,6 +104,11 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.card-vinyl-pricing {
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .truncate {

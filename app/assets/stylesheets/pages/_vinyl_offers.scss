@@ -1,0 +1,62 @@
+.sub-banner {
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+}
+
+.sub-banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#map {
+  position: sticky;
+  top: 0;
+  height: 100vh ;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  flex-grow: 1;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .main-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .main-grid {
+    grid-template-columns: 1fr 1r;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .main-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
