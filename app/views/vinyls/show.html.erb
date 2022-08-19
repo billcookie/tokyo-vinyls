@@ -5,28 +5,47 @@
 </div>
 
 <div class="display-cards">
-  <h2 class="page-header">Offers for <%= @vinyl.name %></h2>
+  <h2 class="page-header">All offers for <%= @vinyl.name %></h2>
   <div class="main-container">
     <div class="row">
       <div class="col-12 col-md-6">
         <% @offers.each do |offer| %>
+          <div class="offer-card-long" >
+            <%= image_tag offer.vinyl.img_url %>
+            <div class="offer-card-long-infos">
+              <div class='truncate'>
+                <h2> <%= offer.vinyl.name %> </h2>
+                <p> <%= offer.description %> </p>
+                <p><i class="fa-solid fa-location-dot"></i> <%= offer.location %></p>
+                <p class="offer-card-long-pricing"><%= offer.price %> ¥ / Day</p>
+              </div>
+            </div>
+            <div class="btn btn-flat">
+              <%= link_to 'Book now', offer_path(offer) %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- Alternative >
+      <% @offers.each do |offer| %>
         <div class="offer-card">
           <div class="overlay">
-              <%= link_to 'Book now', offer_path(offer), class: "btn btn-flat" %>
+              <%= link_to 'Book now', offer_path(offer), class: "btn btn-flat overlay-btn" %>
           </div>
           <div class="offer-card-img"> <%= image_tag offer.vinyl.img_url %> </div>
           <div class="offer-card-infos" style="width: 100%;">
             <div class="info-content d-flex justify-content-center align-items-center flex-column">
-              <h2 class="offer-card-pricing"> <%= offer.price %> ¥</h2>
+              <h2><i class="fa-solid fa-location-dot"></i> <%= offer.location %></h2>
               <div>
                 <p> <%= offer.description %> </p>
-                <p> <i class="fa-solid fa-location-dot"></i> <%= offer.location %> </p>
+                <p class="offer-card-pricing"><strong><%= offer.price %>¥</strong> / Day </p>
               </div>
             </div>
           </div>
         </div>
         <% end %>
-      </div>
+        -->
 
       <!-- Map -->
       <div class="col-12 col-md-6">
