@@ -8,19 +8,18 @@
             <%= image_tag vinyl.img_url %>
             <div class="card-vinyl-infos">
               <div>
-                <h2> <%= vinyl.name %> </h2>
-                <p> <%= vinyl.artist.name %> </p>
+                <h2 class="truncate"> <%= vinyl.name %> </h2>
+                <p class="truncate"> <%= vinyl.artist.name %> </p>
                 <p> <%= vinyl.genre %></p>
-                <p><%= vinyl.offers.count %></p>
+                <p> <%= vinyl.publishing_year %></p>
+                <h3>Offers: <%= vinyl.offers.count %> </h3>
               </div>
-              <h2 class="card-vinyl-pricing"> <%= vinyl.publishing_year %> </h2>
             </div>
           </div>
         <% end %>
       <% end %>
     </div>
     <% if @api_vinyls %>
-      <h3>More Results</h3>
       <div class="cards">
         <% @api_vinyls.each do |vinyl| %>
           <%= simple_form_for(vinyl) do |f| %>
@@ -36,11 +35,12 @@
                 <%= image_tag vinyl.img_url %>
                 <div class="card-vinyl-infos">
                   <div>
-                    <h2> <%= vinyl.name %> </h2>
-                    <p> <%= vinyl.artist.name %> </p>
+                    <h2 class="truncate"> <%= vinyl.name %> </h2>
+                    <p class="truncate"> <%= vinyl.artist.name %> </p>
                     <p> <%= vinyl.genre %></p>
+                    <p> <%= vinyl.publishing_year %></p>
+                   <h3>Offers: <%= vinyl.offers.count %> </h3>
                   </div>
-                  <h2 class="card-vinyl-pricing"> <%= vinyl.publishing_year %> </h2>
                 </div>
               </div>
             <% end %>
