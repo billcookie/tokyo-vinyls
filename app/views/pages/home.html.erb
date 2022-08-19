@@ -26,12 +26,11 @@
           <div class="card-vinyl-infos">
             <div class='truncate'>
               <h2> <%= offer.vinyl.name %> </h2>
-              <p> <%= offer.vinyl.artist %> </p>
+              <p> <%= offer.vinyl.artist.name %> </p>
+              <p class="card-vinyl-pricing"><%= offer.price %> ¥ / Day</p>
             </div>
-            <h2 class="card-vinyl-pricing"> <%= offer.price %> ¥</h2>
           </div>
         </div>
       <% end %>
     <% end %>
   </div>
-</div>

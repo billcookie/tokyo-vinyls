@@ -19,13 +19,14 @@
 }
 
 .offer-card h2 {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
   margin: 0;
+  text-align: right;
 }
 
 .offer-card p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.4;
   opacity: 1;
   margin-bottom: 0;
@@ -35,11 +36,6 @@
 
 .offer-card .offer-card-infos {
   padding: 16px;
-}
-
-.offer-card-pricing {
-  text-align: right;
-  font-weight: bold;
 }
 
 // Overlay
@@ -68,11 +64,131 @@
 
 // Button
 
-.booking-btn {
-  display: none;
+.overlay-btn {
+  opacity: 1;
+  z-index: 99;
 }
 
+
+// Option 2
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.card-row {
+  display: flex;
+  overflow: scroll;
+  padding: 40px;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.offer-card-long {
+  overflow: hidden;
+  height: fit-content;
+  background: rgb(240, 240, 240);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  width: 260px;
+  height: auto;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-radius: 3px;
+}
+
+.offer-card-long > img {
+  height: 250px;
+  width: 250px;
+  object-fit: cover;
+}
+
+.offer-card-long h2 {
+  font-size: 18px;
+  margin: 0;
+  text-align: left;
+}
+
+.offer-card-long p {
+  font-size: 14px;
+  opacity: 0.7;
+  margin: 0;
+  text-align: left;
+}
+
+.offer-card-long .offer-card-long-infos {
+  color: #201e1f;
+  font-family: "Encode Sans Condensed", sans-serif;
+  text-transform: uppercase;
+  padding: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.offer-card-long-pricing {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.truncate {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.booking-btn {
+  color: white;
+  padding: 8px 70px;
+  border-radius: 4px;
+  background: #5C01A7;
+  transition: background 0.3s ease;
+}
+
+
 .offer-card .overlay:hover + .booking-btn,
+
 .booking-btn:hover {
   display: block;
+  background: #4D04C4;
+  color: white;
 }
