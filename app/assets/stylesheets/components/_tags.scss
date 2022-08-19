@@ -6,4 +6,31 @@
   border-radius: 8px;
   font-weight: lighter;
   font-size: 12px;
+  top: 8px;
+  right: 8px;
+  position: absolute;
+  opacity: 0;
+  text-transform: uppercase;
+}
+
+.rejected-color {
+  background-color: red;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  opacity: 0;
+}
+
+.accepted-color {
+  background-color: green;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.pending-color {
+  background-color: grey;
+  position: absolute;
+  top: 8px;
+  right: 8px;
 }

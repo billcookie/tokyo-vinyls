@@ -16,53 +16,60 @@
       <div class="cards">
         <% @bookings.each do |booking| %>
           <div class="card-vinyl" >
+            <p class='booking-tag <%= booking.status %>-color '><%= booking.status %></p>
             <%= image_tag booking.offer.vinyl.img_url %>
             <%= link_to booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Delete offer for #{booking.offer.vinyl.name}?"} , class: 'card-remove-link' do %>
               <i class="fa-solid fa-ban fa-lg"></i>
             <% end %>
-            <div>
-              <h2> <%= booking.offer.vinyl.name %> </h2>
-              <p> <em> <%= booking.status %> </em> </p>
-              <%= "#{booking.start_date.to_time.strftime('%B %e')} - "%>
-              <%= booking.end_date.to_time.strftime('%B %e') %>
+            <div class="card-vinyl-infos">
+              <div class="d-flex flex-column">
+                <h2> <%= booking.offer.vinyl.name %> </h2>
+                <h2><%= "#{booking.start_date.to_time.strftime('%B %e')} - "%>
+                  <%= booking.end_date.to_time.strftime('%B %e') %> </h2>
+                <h2> <%= "¥#{booking.offer.price}" %> </h2>
+              </div>
             </div>
-            <h2 class="card-vinyl-pricing"> <%= "¥#{booking.offer.price}" %> </h2>
           </div>
         <% end %>
       </div>
     </div>
-  </div>
-  <div class="tab-pane fade py-3" id="requests-tab-pane" role="tabpanel" aria-labelledby="requests-tab" tabindex="0">
-    <div class="cards">
-      <% @bookings_as_owner.each do |booking| %>
-        <div class="card-vinyl" >
-          <%= image_tag booking.offer.vinyl.img_url %>
-          <div class="card-vinyl-infos">
-            <div>
-              <h2> <%= booking.offer.vinyl.name %> </h2>
-              <% if booking.pending? %>
-                <div class="d-flex">
-                  <%= simple_form_for booking do |f| %>
-                    <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
-                    <%= f.submit 'Accept', class: 'btn btn-info' %>
-                  <% end %>
-                  <%= simple_form_for booking do |f| %>
-                    <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
-                    <%= f.submit 'Reject', class: 'btn btn-light' %>
-                  <% end %>
+    <div class="tab-pane fade py-3" id="requests-tab-pane" role="tabpanel" aria-labelledby="requests-tab" tabindex="0">
+      <div class="cards">
+        <% @bookings_as_owner.each do |booking| %>
+          <div class="card-vinyl" >
+            <%= image_tag booking.offer.vinyl.img_url %>
+            <p class='booking-tag <%= booking.status %>-color '><%= booking.status %></p>
+            <div class="card-vinyl-infos">
+              <div>
+                <% if booking.pending? %>
+                  <div class="d-flex">
+                    <%= simple_form_for booking do |f| %>
+                      <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+                      <%= f.submit 'Accept', class: 'btn btn-info' %>
+                    <% end %>
+                    <%= simple_form_for booking do |f| %>
+                      <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+                      <%= f.submit 'Reject', class: 'btn btn-light' %>
+                    <% end %>
+                  </div>
+                <% else %>
+                <% end %>
+                <div class="d-flex flex-column">
+                  <h2> <%= booking.offer.vinyl.name %> </h2>
+                  <%= "#{booking.start_date.to_time.strftime('%B %e')} - #{booking.end_date.to_time.strftime('%B %e')} "%>
+                  <h2> <%= "¥#{booking.offer.price}" %> </h2>
                 </div>
-              <% else %>
-                <p class='booking-tag'><%= booking.status %></p>
-              <% end %>
-              <%= "#{booking.start_date.to_time.strftime('%B %e')} - "%>
-              <%= booking.end_date.to_time.strftime('%B %e') %>
+              </div>
             </div>
-            <h2 class="card-vinyl-pricing"> <%= "¥#{booking.offer.price}" %> </h2>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="tab-pane fade py-3" id="conversations-tab-pane" role="tabpanel" aria-labelledby="conversations-tab" tabindex="0">
+      This is the content for the Conversations tab. Notice in the tab HTML there is a href="#converstations". This is pointing to the id of this div.
     </div>
   </div>
+
   <div class="tab-pane fade py-3" id="conversations-tab-pane" role="tabpanel" aria-labelledby="conversations-tab" tabindex="0">
   </div>
 </div>

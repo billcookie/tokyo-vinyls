@@ -2,7 +2,7 @@
   overflow: hidden;
   height: fit-content;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   margin-right: 16px;
@@ -28,9 +28,10 @@
 .offer-card p {
   font-size: 16px;
   line-height: 1.4;
-  opacity: .7;
+  opacity: 1;
   margin-bottom: 0;
   margin-top: 8px;
+  text-transform: capitalize;
 }
 
 .offer-card .offer-card-infos {
@@ -183,7 +184,11 @@
   transition: background 0.3s ease;
 }
 
+
+.offer-card .overlay:hover + .booking-btn,
+
 .booking-btn:hover {
+  display: block;
   background: #4D04C4;
   color: white;
 }
