@@ -67,8 +67,8 @@
   overflow: hidden;
   background: rgb(240, 240, 240);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  width: 250px;
-  height: 330px;
+  width: 260px;
+  height: 350px;
   margin-bottom: 16px;
 }
 
@@ -79,13 +79,13 @@
 }
 
 .card-vinyl h2 {
-  font-size: 14px;
+  font-size: 18px;
   margin: 0;
   text-align: left;
 }
 
 .card-vinyl p {
-  font-size: 10px;
+  font-size: 14px;
   opacity: 0.7;
   margin: 0;
   text-align: left;
@@ -95,7 +95,7 @@
   color: #201e1f;
   font-family: "Encode Sans Condensed", sans-serif;
   text-transform: uppercase;
-  padding: 16px;
+  padding: 14px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -103,6 +103,11 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.card-vinyl-pricing {
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .truncate {
