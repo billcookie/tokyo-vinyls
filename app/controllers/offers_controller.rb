@@ -17,6 +17,7 @@ class OffersController < ApplicationController
   end
 
   def new
+    @vinyl = Vinyl.find(params[:vinyl_id])
     @offer = Offer.new
     @offer.build_vinyl
     authorize @offer
@@ -26,27 +27,19 @@ class OffersController < ApplicationController
     @offer = Offer.new(offer_params)
     @offer.user = current_user
     authorize @offer
-    if offer_params[:vinyl_id]
-      @vinyl = Vinyl.find(offer_params[:vinyl_id])
-      @offer.vinyl = @vinyl
-    end
+    @vinyl = Vinyl.find(params[:vinyl_id])
+    @offer.vinyl = @vinyl
+
     if @offer.save
-      redirect_to offers_path
+      redirect_to bookings_path
       flash[:alert] = "New Offer Successfully Created"
     else
       render :new, status: :unprocessable_entity
     end
   end
-
-  # def price_calc
-  #   start = Date.parse(params[:startDate])
-  #   end_date = Date.parse(params[:endDate])
-  #   price = @vehicle.cost * (end - start).to_i
-  # end
-
   private
 
   def offer_params
-    params.require(:offer).permit(:vinyl_id, :description, :price, :condition, :location)
+    params.require(:offer).permit(:description, :price, :condition, :location)
   end
 end

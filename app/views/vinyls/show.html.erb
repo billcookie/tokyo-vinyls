@@ -36,3 +36,6 @@
   <%#= image_tag @vinyl.artist.profile_img, alt: "artist profile image" %>
   -->
 </div>
+<div class="btn btn-flat">
+  <%= link_to 'Create', "/vinyls/#{@vinyl.id}/offers/new" %>
+</div>

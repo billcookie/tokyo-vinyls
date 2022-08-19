@@ -14,6 +14,7 @@ class VinylsController < ApplicationController
   def show
     @vinyl = Vinyl.find(params[:id])
     @offers = @vinyl.offers
+    @offer = Offer.new
     @markers = @offers.geocoded.map do |offer|
       {
         lat: offer.latitude,

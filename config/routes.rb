@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resources :bookings, only: [:index, :update, :destroy]
-  resources :vinyls, only: [:index, :show, :create, :new]
-
-  resources :offers, only: [:new, :show, :index, :create] do
+  resources :vinyls, only: [:index, :show, :create, :new] do
+    resources :offers, only: [:create, :new]
+  end
+  resources :offers, only: [:show, :index] do
     resources :bookings, only: [:create]
   end
 
