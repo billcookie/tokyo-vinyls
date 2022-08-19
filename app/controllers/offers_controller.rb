@@ -4,7 +4,8 @@ class OffersController < ApplicationController
     @markers = @offers.geocoded.map do |offer|
       {
         lat: offer.latitude,
-        lng: offer.longitude
+        lng: offer.longitude,
+        info_window: render_to_string(partial: "offers/popup", locals: { offer: offer })
       }
     end
   end
@@ -17,6 +18,7 @@ class OffersController < ApplicationController
 
   def new
     @offer = Offer.new
+    @offer.build_vinyl
     authorize @offer
   end
 
@@ -24,14 +26,23 @@ class OffersController < ApplicationController
     @offer = Offer.new(offer_params)
     @offer.user = current_user
     authorize @offer
-    @vinyl = Vinyl.find(offer_params[:vinyl_id])
-    @offer.vinyl = @vinyl
+    if offer_params[:vinyl_id]
+      @vinyl = Vinyl.find(offer_params[:vinyl_id])
+      @offer.vinyl = @vinyl
+    end
     if @offer.save
       redirect_to offers_path
+      flash[:alert] = "New Offer Successfully Created"
     else
       render :new, status: :unprocessable_entity
     end
   end
+
+  # def price_calc
+  #   start = Date.parse(params[:startDate])
+  #   end_date = Date.parse(params[:endDate])
+  #   price = @vehicle.cost * (end - start).to_i
+  # end
 
   private
 

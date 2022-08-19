@@ -1,9 +1,8 @@
-<div class="sub-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path @vinyl.artist.profile_img, alt: "artist profile image"  %>);">
+<div class="sub-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @vinyl.artist.profile_img ? image_path(@vinyl.artist&.profile_img) : "https://musicindustryhowtoimages.s3.amazonaws.com/wp-content/uploads/2019/09/24183938/become-musician.jpg" %>);">
   <div class="container">
     <h1><%= @vinyl.artist.name %></h1>
   </div>
 </div>
-
 <div class="display-cards">
   <h2 class="page-header">All offers for <%= @vinyl.name %></h2>
   <div class="main-container">
@@ -26,27 +25,6 @@
           </div>
         <% end %>
       </div>
-
-      <!-- Alternative >
-      <% @offers.each do |offer| %>
-        <div class="offer-card">
-          <div class="overlay">
-              <%= link_to 'Book now', offer_path(offer), class: "btn btn-flat overlay-btn" %>
-          </div>
-          <div class="offer-card-img"> <%= image_tag offer.vinyl.img_url %> </div>
-          <div class="offer-card-infos" style="width: 100%;">
-            <div class="info-content d-flex justify-content-center align-items-center flex-column">
-              <h2><i class="fa-solid fa-location-dot"></i> <%= offer.location %></h2>
-              <div>
-                <p> <%= offer.description %> </p>
-                <p class="offer-card-pricing"><strong><%= offer.price %>¥</strong> / Day </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <% end %>
-        -->
-
       <!-- Map -->
       <div class="col-12 col-md-6">
         <%= render 'shared/map', markers: @markers.to_json %>
@@ -54,7 +32,7 @@
     </div>
   </div>
   <!-- Artist Profile
-  <%= @vinyl.artist.profile %>
-  <%= image_tag @vinyl.artist.profile_img, alt: "artist profile image" %>
+  <%#= @vinyl.artist.profile %>
+  <%#= image_tag @vinyl.artist.profile_img, alt: "artist profile image" %>
   -->
 </div>

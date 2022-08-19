@@ -1,0 +1,28 @@
+.tabs-underlined {
+  display: flex;
+  align-items: center;
+}
+.tabs-underlined {
+  .tab-underlined {
+    color: white;
+    padding: 8px;
+    margin: 8px 16px;
+    opacity: 0.4;
+    cursor: pointer;
+    text-decoration: none;
+    border-bottom: 4px solid transparent;
+    display: block;
+    font-size: 24px;
+    font-family: "Encode Sans Condensed", sans-serif;
+    text-transform: uppercase;
+    font-weight: 100;
+    color: white;
+  }
+  .tab-underlined:hover {
+    opacity: 0.5;
+  }
+  .tab-underlined.active {
+    opacity: 1;
+    transition: opacity 0.15s linear;
+  }
+}

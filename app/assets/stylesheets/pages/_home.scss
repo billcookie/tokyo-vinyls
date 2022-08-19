@@ -1,7 +1,7 @@
 // Specific CSS for your home-page
 h1 {
   font-size: 32px;
-  font-family: 'Encode Sans Condensed', sans-serif;
+  font-family: "Encode Sans Condensed", sans-serif;
   text-transform: uppercase;
   font-weight: 100;
   color: white;
@@ -11,16 +11,16 @@ h1 {
   background-size: cover;
   background-position: center;
   padding: 150px 0;
-  font-family: 'Encode Sans Condensed', sans-serif;
+  font-family: "Encode Sans Condensed", sans-serif;
   height: 500px;
 }
 
 .banner h1 {
   margin: 0;
   color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
   font-size: 40px;
-  font-family: 'Encode Sans Condensed', sans-serif;
+  font-family: "Encode Sans Condensed", sans-serif;
   text-transform: uppercase;
   font-weight: 100;
 }
@@ -28,31 +28,31 @@ h1 {
 .banner p {
   font-size: 20px;
   color: white;
-  opacity: .7;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+  opacity: 0.7;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
 }
 
 .btn-flat {
   color: white;
   padding: 8px 24px;
   border-radius: 4px;
-  background: #5C01A7;
+  background: #5c01a7;
   transition: background 0.3s ease;
 }
 
 .btn-flat:hover {
-  background: #4D04C4;
+  background: #4d04c4;
   color: white;
 }
 
 .display-cards {
-  background-color: #201E1F;
+  background-color: #201e1f;
   text-align: center;
   padding: 40px;
 
   .page-header {
     font-size: 24px;
-    font-family: 'Encode Sans Condensed', sans-serif;
+    font-family: "Encode Sans Condensed", sans-serif;
     text-transform: uppercase;
     font-weight: 100;
     color: white;
@@ -62,10 +62,10 @@ h1 {
 }
 
 .display-cards #landing-header {
-    font-size: 24px;
-    font-family: 'Encode Sans Condensed', sans-serif;
-    text-transform: uppercase;
-    font-weight: 100;
-    color: white;
-    white-space: nowrap;
+  font-size: 24px;
+  font-family: "Encode Sans Condensed", sans-serif;
+  text-transform: uppercase;
+  font-weight: 100;
+  color: white;
+  white-space: nowrap;
 }

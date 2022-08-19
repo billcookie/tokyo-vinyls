@@ -4,6 +4,24 @@
   grid-gap: 16px;
 }
 
+.card-vinyl {
+  position: relative;
+}
+
+.card-remove-link {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  text-decoration: none;
+  color: $red;
+  opacity: 0.8;
+  &:hover {
+    color: $red;
+    opacity: 1;
+    text-decoration: none;
+  }
+}
+
 .card-row {
   display: flex;
   overflow: scroll;
