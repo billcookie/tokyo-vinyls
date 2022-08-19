@@ -1,6 +1,11 @@
-<div class="container mb-2">
+<style>
+  .create-form {
+    color: white;
+  }
+</style>
+<div class="container mb-2 create-form">
   <%= simple_form_for [@vinyl, @offer] do |f| %>
-    <%= f.input :price%>
+    <%= f.input :price %>
     <%= f.input :condition%>
     <%= f.input :description %>
     <%= f.input :location%>
