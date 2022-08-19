@@ -13,6 +13,21 @@
   text-align: center;
 }
 
+.create-btn {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #5C01A7;
+  transition: background 0.3s ease;
+  margin-bottom: 40px;
+  width: fit-content;
+}
+
+.create-btn:hover {
+  background: #4D04C4;
+  color: white;
+}
+
 #map {
   position: sticky;
   top: 0;

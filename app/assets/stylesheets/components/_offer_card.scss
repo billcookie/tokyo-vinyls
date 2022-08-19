@@ -50,7 +50,6 @@
   height: fit-content;
   background: rgb(240, 240, 240);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  height: auto;
   width: 260px;
   margin-bottom: 16px;
   padding-bottom: 16px;
@@ -62,8 +61,8 @@
 }
 
 .offer-card-long > img {
-  height: 250px;
-  width: 250px;
+  height: 260px;
+  width: 260px;
   object-fit: cover;
 }
 
