@@ -18,43 +18,45 @@ puts "seeding bookings...."
 # the Le Wagon copy of the API
 api = Discogs::Wrapper.new("Tokyo Vinyls", user_token: ENV["DISCOGS_TOKEN"])
 
-artist_ids = [2508414, 65049, 304053, 3852273]
+artist_ids = [2508414, 65049, 304053, 3852273, 1615988, 2171152]
 
-
-search = api.search(artist_ids, :per_page => 10)
-
-releases = search["results"]
-
-
-
-releases.map do |release|
-  release_data = api.get_release(release["id"])
-
-  releases = search["results"]
-  # itterate over each results to get its details using get_release
-
-  composer = Artist.find_or_initialize_by(
-          name: release_data["artists"].first["name"]
-         )
-  phonograph = Vinyl.new(
-          name: release_data["title"],
-          publishing_year: release_data["year"].to_i,
-          img_url: release_data["images"] ? release_data["images"][0]["uri"] : "https://upload.wikimedia.org/wikipedia/commons/b/b1/Vinyl_record_LP_10inch.JPG",
-          genre: release_data["genres"].first,
-          artist: composer
-        )
-  phonograph.artist = composer
-  phonograph.save!
+releases = artist_ids.map do |artist_id|
+  search = api.search(artist_id, :per_page => 10)
+  data = search["results"]
 end
 
+releases.each do |vinyls|
+
+
+
+  vinyls.map do |release|
+    release_data = api.get_release(release["id"])
+
+
+    # itterate over each results to get its details using get_release
+
+    composer = Artist.find_or_initialize_by(
+            name: release_data["artists"] ? release_data["artists"].first["name"] : "Bob"
+          )
+    phonograph = Vinyl.new(
+            name: release_data["title"] ? release_data["title"] : "Generic Title",
+            publishing_year: release_data["year"] ? release_data["year"].to_i : 2022,
+            img_url: release_data["images"] ? release_data["images"][0]["uri"] : "https://upload.wikimedia.org/wikipedia/commons/b/b1/Vinyl_record_LP_10inch.JPG",
+            genre: release_data["genres"] ? release_data["genres"].first : "Rock 'n' Roll",
+            artist: composer
+            )
+      phonograph.artist = composer
+      phonograph.save!
+  end
+end
 artist_ids.each do |artist_id|
 
   data2 = api.get_artist(artist_id)
-  composer = Artist.find_by(name: data2["name"])
+  composer = Artist.find_by(name: data2["name"] ? data2["name"] : "Bob" )
   if composer
     composer.update(
-      profile: data2["profile"],
-      profile_img: data2["images"][0]["uri"]
+      profile: data2["profile"] ? data2["profile"] : "Hello",
+      profile_img: data2["images"] ? data2["images"][0]["uri"] : "https://cdn3.careeraddict.com/uploads/article/54483/medium-man-playing-acoustic-guitar.jpg"
     )
   end
 end
