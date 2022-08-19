@@ -1,44 +1,87 @@
 .mapboxgl-popup-content {
-  padding: 6px;
   background-color: rgb(35, 35, 172);
-  color: white;
   padding: 0em;
   border-radius: 4px;
-  font-family: $body-font;
   width: 260px;
+  position: relative;
   ul {
     padding-left: 0;
   }
 
   .popup-text {
-    // margin-left: auto;
-    // margin-right: auto;
-    margin: auto;
-    // align-items: center;
-    text-align: center;
+    margin: 20px;
+  }
+
+  #image-map {
+    width: 80px;
+    height: 80px;
+    margin: 20px;
   }
 }
 
-.mapboxgl-popup-close-button{
-  opacity: 0;
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip {
+    border-bottom-color: rgb(35, 35, 172);
+    }
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip {
+    border-top-color: rgb(35, 35, 172);
+    }
+.mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+    border-right-color: rgb(35, 35, 172);
+    }
+.mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+    border-left-color: rgb(35, 35, 172);
+    }
+.mapboxgl-popup-close-button {
 
+//  color: white
+ color: white;
+//  margin: 4px;
+//  border-radius: 50%;
+//  padding: 2px;
+//  width: 8px;
+//   height: 8px;
+//   object-fit: cover;
+//   object-position: center;
   &:hover {
-    & + .mapboxgl-popup-content .close-button {
-    color: red;
+    background-color: red
+  }
+  &:focus {
+    outline: none;
   }
 }
+
+
+.map-text {
+  margin: 30px;
+  color: white;
+  font-family: $body-font;
+  text-align: center;
 }
 
-.close-button {
-  color: inherit;
-  position: absolute;
-  right: 4px;
-  top: 4px;
+// .mapboxgl-popup-close-button{
+//   // opacity: 0;
 
-  &:hover {
-    color: red
-  }
-}
+//   &:hover {
+//     & + .mapboxgl-popup-content .close-button {
+//     color: red;
+//   }
+// }
+// }
+
+// .close-button {
+//   background-color: white;
+//   position: absolute;
+//   right: 10px;
+//   top: -20px;
+
+//   &:hover {
+//     color: red
+//   }
+// }
 
 .pulse {
   position: absolute;

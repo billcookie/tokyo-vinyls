@@ -1,10 +1,13 @@
 <div class="mapboxgl-popup-content">
-  <div class="close-button">
-    <i class="fa-solid fa-circle-xmark justify-self-end"></i>
+  <div class="mapboxgl-popup-close-button"></div>
+  <%# <div class="close-button mapboxgl-popup-close-button"> %>
+  <%# <i class="fa-solid fa-circle-xmark justify-self-end"></i> %>
+  <%# </div> %>
+  <div class="map-text">
+    <ul>vinyl name: <%= offer.vinyl.name %></ul>
+    <ul>artist name: <%= offer.vinyl.artist.name %></ul>
+    <ul>user name: <%= "#{offer.user.first_name} #{offer.user.last_name}" %></ul>
+    <ul>location: <%= offer.location %></ul>
   </div>
-  <ul>vinyl name: <%= offer.vinyl.name %></ul>
-  <ul>artist name: <%= offer.vinyl.artist.name %></ul>
-  <ul>user name: <%= "#{offer.user.first_name} #{offer.user.last_name}" %></ul>
-  <ul>location: <%= offer.location %></ul>
-  <%= image_tag offer.vinyl.img_url %>
+  <%= image_tag offer.vinyl.img_url, id: "image-map" %>
 </div>

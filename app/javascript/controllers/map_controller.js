@@ -35,4 +35,6 @@ export default class extends Controller {
     // this.map.setZoom(10)
   }
   //{ padding: 35}
+
+  #close
 }
