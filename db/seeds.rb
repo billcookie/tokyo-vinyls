@@ -18,7 +18,7 @@ puts "seeding bookings...."
 # the Le Wagon copy of the API
 api = Discogs::Wrapper.new("Tokyo Vinyls", user_token: ENV["DISCOGS_TOKEN"])
 
-artist_ids = [2508414, 65049, 304053, 3852273, 1615988, 2171152]
+artist_ids = [2508414, 65049, 3852273, 1615988, 2171152]
 
 releases = artist_ids.map do |artist_id|
   search = api.search(artist_id, :per_page => 10)
