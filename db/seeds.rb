@@ -18,7 +18,9 @@ puts "seeding bookings...."
 # the Le Wagon copy of the API
 api = Discogs::Wrapper.new("Tokyo Vinyls", user_token: ENV["DISCOGS_TOKEN"])
 
-artist_ids = [3852273, 65049, 95886]
+artist_ids = [2508414, 65049, 304053, 3852273]
+
+
 search = api.search(artist_ids, :per_page => 10)
 
 releases = search["results"]
@@ -37,7 +39,7 @@ releases.map do |release|
   phonograph = Vinyl.new(
           name: release_data["title"],
           publishing_year: release_data["year"].to_i,
-          img_url: release_data["images"][0]["uri"],
+          img_url: release_data["images"] ? release_data["images"][0]["uri"] : "https://upload.wikimedia.org/wikipedia/commons/b/b1/Vinyl_record_LP_10inch.JPG",
           genre: release_data["genres"].first,
           artist: composer
         )
@@ -99,7 +101,7 @@ addresses = YAML.load(addresses_file)
 
 
 User.all.each do |user|
-  rand(1..10).times do
+  rand(1..8).times do
     Offer.create!(
       price: [100, 200, 300].sample,
       user: user,
@@ -112,7 +114,7 @@ User.all.each do |user|
 end
 
 User.all.each do |user|
-  rand(1..6).times do
+  rand(1..5).times do
     Booking.create!(
       user: user,
       offer: Offer.where.not(id: user.offers).sample,
