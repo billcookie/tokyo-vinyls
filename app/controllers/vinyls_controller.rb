@@ -60,7 +60,7 @@ class VinylsController < ApplicationController
       Vinyl.new(
         name: release_data["title"],
         publishing_year: release_data["year"].to_i,
-        img_url: release_data["images"][0]["uri"],
+        img_url: release_data["images"] ? release_data["images"][0]["uri"] : "https://upload.wikimedia.org/wikipedia/commons/b/b1/Vinyl_record_LP_10inch.JPG",
         genre: release_data["genres"].first,
         artist: artist
       )
