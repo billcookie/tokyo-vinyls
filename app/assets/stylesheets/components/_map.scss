@@ -1,0 +1,95 @@
+.mapboxgl-popup-content {
+  background-color: rgb(35, 35, 172);
+  padding: 0em;
+  border-radius: 4px;
+  width: 260px;
+  position: relative;
+  ul {
+    padding-left: 0;
+  }
+
+  .popup-text {
+    margin: 20px;
+  }
+
+  #image-map {
+    width: 80px;
+    height: 80px;
+    margin: 20px;
+  }
+}
+
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip {
+    border-bottom-color: rgb(35, 35, 172);
+    }
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip {
+    border-top-color: rgb(35, 35, 172);
+    }
+.mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+    border-right-color: rgb(35, 35, 172);
+    }
+.mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+    border-left-color: rgb(35, 35, 172);
+    }
+.mapboxgl-popup-close-button {
+
+//  color: white
+ color: white;
+//  margin: 4px;
+//  border-radius: 50%;
+//  padding: 2px;
+//  width: 8px;
+//   height: 8px;
+//   object-fit: cover;
+//   object-position: center;
+  &:hover {
+    background-color: red
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+
+.map-text {
+  margin: 30px;
+  color: white;
+  font-family: $body-font;
+  text-align: center;
+}
+
+// .mapboxgl-popup-close-button{
+//   // opacity: 0;
+
+//   &:hover {
+//     & + .mapboxgl-popup-content .close-button {
+//     color: red;
+//   }
+// }
+// }
+
+// .close-button {
+//   background-color: white;
+//   position: absolute;
+//   right: 10px;
+//   top: -20px;
+
+//   &:hover {
+//     color: red
+//   }
+// }
+
+.pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -5px 0 0 -5px;
+  width: 10px;
+  height: 10px;
+  background: rgba(60, 141, 197, 0.8);
+  border-radius: 999px;
+}
