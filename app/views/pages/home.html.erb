@@ -21,16 +21,16 @@
   <div class="card-row">
     <% @offers.each do |offer| %>
       <%=link_to vinyl_path(offer.vinyl) do %>
-      <div class="card-vinyl mx-2" >
-        <%= image_tag offer.vinyl.img_url %>
-        <div class="card-vinyl-infos">
-          <div class='truncate'>
-            <h2> <%= offer.vinyl.name %> </h2>
-            <p> <%= offer.vinyl.artist.name %> </p>
-            <p class="card-vinyl-pricing"><%= offer.price %> ¥ / Day</p>
+        <div class="card-vinyl mx-2" >
+          <%= image_tag offer.vinyl.img_url %>
+          <div class="card-vinyl-infos">
+            <div class='truncate'>
+              <h2> <%= offer.vinyl.name %> </h2>
+              <p> <%= offer.vinyl.artist.name %> </p>
+              <p class="card-vinyl-pricing"><%= offer.price %> ¥ / Day</p>
+            </div>
           </div>
         </div>
       <% end %>
     <% end %>
   </div>
-</div>
