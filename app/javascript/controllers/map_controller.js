@@ -13,7 +13,6 @@ export default class extends Controller {
       container: this.element,
       style: "mapbox://styles/ayakayaka/cl6yobdw7000a14o5r1qujcn3",
       center: [116.383331, 39.916668],
-      zoom: 5
     })
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
@@ -30,7 +29,7 @@ export default class extends Controller {
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    this.map.fitBounds(bounds)
+    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
     // this.map.setCenter([this.markersValue[0].lng, this.markersValue[0].lat])
     // this.map.setZoom(10)
   }

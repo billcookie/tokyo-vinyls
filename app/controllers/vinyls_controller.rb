@@ -56,13 +56,13 @@ class VinylsController < ApplicationController
       release_data = api.get_release(release["id"])
       # For each of these we need to build instances of a vinyl + artists
       artist = Artist.find_or_initialize_by(
-        name: release_data["artists"].first["name"]
+        name: release_data["artists"] ? release_data["artists"].first["name"] : ["Lil Cookie", "$AyakaAyaka", "C-Dogu", "Joshy Woshy"].sample
       )
       Vinyl.new(
-        name: release_data["title"],
-        publishing_year: release_data["year"] ? release_data["year"].to_i : 2022,
-        img_url: release_data["images"] ? release_data["images"][0]["uri"] : "https://upload.wikimedia.org/wikipedia/commons/b/b1/Vinyl_record_LP_10inch.JPG",
-        genre: release_data["genres"] ? release_data["genres"].first : "Rock",
+        name: release_data["title"] ? release_data["title"] : ["Carla's Adventure", "That Train a Coming In", "Washed Up", "Bootstrap"].sample,
+        publishing_year: release_data["year"] ? release_data["year"].to_i : [2022, 1997, 1994, 1999, 1969, 1970].sample,
+        img_url: release_data["images"] ? release_data["images"][0]["uri"] : ["https://upload.wikimedia.org/wikipedia/commons/b/b1/Vinyl_record_LP_10inch.JPG", "https://assets3.thrillist.com/v1/image/2747462/720x960/scale;webp=auto;jpeg_quality=60.jpg", "https://www.argospetinsurance.co.uk/assets/uploads/2014/06/Exotic-Short-Hair1.jpg"].sample,
+        genre: release_data["genres"] ? release_data["genres"].first : ["Rock", "Blues", "RnB", "Soul", "Rap"].sample,
         artist: artist
       )
     end

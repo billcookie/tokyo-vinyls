@@ -36,13 +36,13 @@ releases.each do |vinyls|
     # itterate over each results to get its details using get_release
 
     composer = Artist.find_or_initialize_by(
-            name: release_data["artists"] ? release_data["artists"].first["name"] : "Bob"
+            name: release_data["artists"] ? release_data["artists"].first["name"] : ["Lil Cookie", "$AyakaAyaka", "C-Dogu", "Joshy Woshy"].sample
           )
     phonograph = Vinyl.new(
-            name: release_data["title"] ? release_data["title"] : "Generic Title",
-            publishing_year: release_data["year"] ? release_data["year"].to_i : 2022,
-            img_url: release_data["images"] ? release_data["images"][0]["uri"] : "https://upload.wikimedia.org/wikipedia/commons/b/b1/Vinyl_record_LP_10inch.JPG",
-            genre: release_data["genres"] ? release_data["genres"].first : "Rock 'n' Roll",
+            name: release_data["title"] ? release_data["title"] : ["Carla's Adventure", "That Train a Coming In", "Washed Up", "Bootstrap"].sample,
+            publishing_year: release_data["year"] ? release_data["year"].to_i : [2022, 1997, 1994, 1999, 1969, 1970].sample,
+            img_url: release_data["images"] ? release_data["images"][0]["uri"] : ["https://upload.wikimedia.org/wikipedia/commons/b/b1/Vinyl_record_LP_10inch.JPG", "https://assets3.thrillist.com/v1/image/2747462/720x960/scale;webp=auto;jpeg_quality=60.jpg", "https://www.argospetinsurance.co.uk/assets/uploads/2014/06/Exotic-Short-Hair1.jpg"].sample,
+            genre: release_data["genres"] ? release_data["genres"].first : ["Rock", "Blues", "RnB", "Soul", "Rap"].sample,
             artist: composer
             )
       phonograph.artist = composer
