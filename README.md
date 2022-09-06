@@ -2,7 +2,7 @@
 
 Project description goes here
 
-_DROP SCREENSHOT HERE_
+
 <br>
 App home: https://tokyo-vinyls.herokuapp.com/
    
