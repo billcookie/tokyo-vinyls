@@ -1,6 +1,6 @@
 # 📚 Tokyo Vinyls
 
-Project description goes here
+An airbnb clone web application built in five days.
 
 
 <br>
