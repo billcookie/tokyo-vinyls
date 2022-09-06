@@ -1,4 +1,4 @@
-# 📚 Tokyo Vinyls
+# 📀 Tokyo Vinyls
 
 An airbnb clone web application built in five days.
 
