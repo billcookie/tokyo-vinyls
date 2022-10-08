@@ -4,7 +4,7 @@ An airbnb clone web application built in five days.
 
 
 <br>
-App home: https://tokyo-vinyls.herokuapp.com/
+App home: https://tokyo-vinyls.fly.dev/
    
 
 ## Getting Started
