@@ -1,7 +1,6 @@
 # 📀 Tokyo Vinyls
 
-An airbnb clone web application built in five days.
-
+An airbnb clone web application built in five days to connect vinyl collectors and fans around Tokyo.
 
 <br>
 App home: https://tokyo-vinyls.fly.dev/
