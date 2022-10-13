@@ -11,7 +11,6 @@ export default class extends Controller {
     mapboxgl.accessToken = this.apiKeyValue
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/ayakayaka/cl6yobdw7000a14o5r1qujcn3",
       center: [116.383331, 39.916668],
     })
     this.#addMarkersToMap()
